@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
+
 class Login extends StatefulWidget {
   @override
   _LoginState createState() => _LoginState();
@@ -84,7 +85,14 @@ class _LoginState extends State<Login> {
                       ),
                       Container(
                         child: new RaisedButton(
-                          onPressed: () => {print("Sign in using facebook")},
+                          onPressed: () async {
+                            var result = await AuthService().loginWithFacebook();
+                            if(result =null){
+                              print("Error login with Google");
+                            }
+                            print("Login Successful with Google");
+
+                          },
                           color: Colors.blue[50].withAlpha(220),
                           padding:
                               EdgeInsets.symmetric(horizontal: 86, vertical: 7),

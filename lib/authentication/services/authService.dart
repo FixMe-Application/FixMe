@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -38,27 +39,47 @@ class AuthService {
       return null;
     }
   }
+
   Future<bool> loginWithGoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
       GoogleSignInAccount account = await googleSignIn.signIn();
 
-      if(account==null){
+      if (account == null) {
         return false;
       }
-      AuthResult result = await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-        idToken: (await account.authentication).idToken, 
-        accessToken: (await account.authentication).accessToken));
-      if (result.user == null ) {
+      AuthResult result = await _auth.signInWithCredential(
+          GoogleAuthProvider.getCredential(
+              idToken: (await account.authentication).idToken,
+              accessToken: (await account.authentication).accessToken));
+      if (result.user == null) {
         return false;
-      }  
+      }
       return true;
-      
     } catch (e) {
       print("Error login with google");
       return false;
     }
-    
+  }
 
+  Future<void> loginWithFacebook() async {
+    
+    try {
+      var facebookLogin = new FacebookLogin();
+      var result = await facebookLogin.logIn(['email']);
+
+      if (result.status == FacebookLoginStatus.loggedIn) {
+        final AuthCredential credential = FacebookAuthProvider.getCredential(
+          accessToken: result.accessToken.token,
+        );
+        final FirebaseUser user =
+            (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+        print("FB signed in successful");
+        
+        return user;
+      }
+    } catch (e) {
+      print(e.message);
+    }
   }
 }
