@@ -45,9 +45,7 @@ class GetStart extends StatelessWidget {
             top: 600,
             left: 65,
             child: new RaisedButton(
-              onPressed: () {
-                return Login();
-              },
+              onPressed: ()=> {"Button pressed"},
               color: Colors.blue,
               padding: EdgeInsets.symmetric(horizontal:100, vertical: 10),
               child: new Text(

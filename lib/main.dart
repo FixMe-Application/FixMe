@@ -1,4 +1,5 @@
 import 'package:fix_me_app/authentication/getStart.dart';
+import 'package:fix_me_app/authentication/login.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GetStart(),
+      // home: GetStart(),
+      home: Login(),
     );
   }
 }
