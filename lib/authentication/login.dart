@@ -1,5 +1,5 @@
 import 'package:fix_me_app/authentication/getStart.dart';
-import 'package:fix_me_app/authentication/services/auth.dart';
+import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -51,7 +51,14 @@ class _LoginState extends State<Login> {
                       Padding(padding: new EdgeInsets.all(8.0)),
                       Container(
                         child: new RaisedButton(
-                          onPressed: () => {print("Sign in using google")},
+                          onPressed: () async{
+                            bool result = await AuthService().loginWithGoogle();
+                            if(!result){
+                              print("Error login with Google");
+                            }
+                            print("Login Successful with Google");
+
+                          },
                           color: Colors.blue[50].withAlpha(220),
                           padding:
                               EdgeInsets.symmetric(horizontal: 94, vertical: 7),
