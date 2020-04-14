@@ -26,20 +26,23 @@ class AuthService {
       return null;
     }
   }
+  
+// //Register with Email and password
+//   Future registerWithEmailAndPassword(String email, String password) async {
+//     try {
+//       AuthResult result = await _auth.createUserWithEmailAndPassword(
+//           email: email, password: password);
+//       FirebaseUser user = result.user;
 
-  Future registerWithEmailAndPassword(String email, String password) async {
-    try {
-      AuthResult result = await _auth.createUserWithEmailAndPassword(
-          email: email, password: password);
-      FirebaseUser user = result.user;
+//       return (_userFromFirebaseUser(user));
+//     } catch (e) {
+//       print(e.toString());
+//       return null;
+//     }
+//   }
 
-      return (_userFromFirebaseUser(user));
-    } catch (e) {
-      print(e.toString());
-      return null;
-    }
-  }
 
+//Login with Google
   Future<bool> loginWithGoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
@@ -62,11 +65,16 @@ class AuthService {
     }
   }
 
-  Future<void> loginWithFacebook() async {
+// Login with Facebook
+  Future<bool> loginWithFacebook() async {
+    FirebaseUser user;
     
     try {
       var facebookLogin = new FacebookLogin();
       var result = await facebookLogin.logIn(['email']);
+      if(result==null){
+        return false;
+      }
 
       if (result.status == FacebookLoginStatus.loggedIn) {
         final AuthCredential credential = FacebookAuthProvider.getCredential(
@@ -75,11 +83,19 @@ class AuthService {
         final FirebaseUser user =
             (await FirebaseAuth.instance.signInWithCredential(credential)).user;
         print("FB signed in successful");
+        if(user==null){
+          return false;
+        }else{
+          return true;
+        }
         
-        return user;
-      }
+        }
+        
+        
+      
     } catch (e) {
       print(e.message);
+      return false;
     }
   }
 }

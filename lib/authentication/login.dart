@@ -86,8 +86,8 @@ class _LoginState extends State<Login> {
                       Container(
                         child: new RaisedButton(
                           onPressed: () async {
-                            var result = await AuthService().loginWithFacebook();
-                            if(result =null){
+                            bool result = await AuthService().loginWithFacebook();
+                            if(!result){
                               print("Error login with Google");
                             }
                             print("Login Successful with Google");
