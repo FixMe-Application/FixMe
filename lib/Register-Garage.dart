@@ -88,7 +88,7 @@ class _RegisterGarageState extends State<RegisterGarage> {
                  ),
                        DropdownButton<String>(
                      
-                     value: "I have a garage",
+                     value: dropdownValue,
                      iconSize: 29,
                      elevation: 2,
                      style: TextStyle(fontSize:25,color: Colors.black), 

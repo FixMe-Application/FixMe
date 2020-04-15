@@ -12,7 +12,7 @@ void verify(){
 }
 
 
- String dropdownValue = 'One';
+ String dropdownValue = 'As a Driver';
 
 class MyApp extends StatelessWidget {
  
@@ -135,10 +135,9 @@ class _RegisterState extends State<Register> {
                     child: Text("User Type:", style: TextStyle(fontSize:25, color: Colors.blue), textAlign: TextAlign.left, ),
                      
                    ),]),
-                   
                    DropdownButton<String>(
                      
-                     value: "As a Driver",
+                     value: dropdownValue,
                      iconSize: 24,
                      elevation: 16,
                      style: TextStyle(fontSize:25,color: Colors.black), 
@@ -147,7 +146,7 @@ class _RegisterState extends State<Register> {
                          dropdownValue = newValue;
                          });
                          },
-                         items: <String>['As a Driver', 'As a Fuel Supplier', 'As a Machanic']
+                         items: <String>['As a Driver', 'As a Fuel Supplier', 'As a Mechanic']
                          .map<DropdownMenuItem<String>>((String value) {
                            return DropdownMenuItem<String>(
                              value: value,
@@ -164,7 +163,15 @@ RaisedButton(
                     
                     
                     onPressed: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterUser()));
+                      if(dropdownValue=="As a Mechanic"){
+                       return Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterGarage()));
+                      }
+                      else if(dropdownValue=="As a Driver"){
+                       return Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterUser()));
+                      }
+                      else if(dropdownValue=="As a Fuel Supplier"){
+                       return Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterFuel()));
+                      }
                     },
 ),
                     
