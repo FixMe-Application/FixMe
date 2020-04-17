@@ -1,9 +1,7 @@
-import 'package:fix_me_app/authentication/getStart.dart';
 import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-
+import '../getStart.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -49,8 +47,11 @@ class _LoginState extends State<Login> {
                   key: _formKey,
                   child: new Column(
                     children: <Widget>[
+
                       Padding(padding: new EdgeInsets.all(8.0)),
+                      SizedBox(height:15),
                       Container(
+                        
                         child: new RaisedButton(
                           onPressed: () async{
                             bool result = await AuthService().loginWithGoogle();
@@ -65,6 +66,7 @@ class _LoginState extends State<Login> {
                               EdgeInsets.symmetric(horizontal: 94, vertical: 7),
                           child: Row(
                             children: <Widget>[
+                              
                               new Image.asset(
                                 "./assets/googlelogin.png",
                                 height: 25,
@@ -116,33 +118,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      Container(
-                        child: new RaisedButton(
-                          onPressed: () => {print("Sign in using apple id")},
-                          color: Colors.blue[50].withAlpha(220),
-                          padding:
-                              EdgeInsets.symmetric(horizontal: 87, vertical: 7),
-                          child: Row(
-                            children: <Widget>[
-                              new Image.asset(
-                                "./assets/applelogin.png",
-                                height: 25,
-                                width: 25,
-                              ),
-                              SizedBox(width: 10),
-                              new Text(
-                                "Sign in with Apple Id",
-                                style: new TextStyle(
-                                  color: Colors.black,
-                                  fontSize: 16.9,
-                                  fontWeight: FontWeight.w600,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      SizedBox(height: 15),
+                      SizedBox(height: 30),
                       new Row(
                         children: <Widget>[
                           Expanded(
@@ -165,7 +141,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       SizedBox(
-                        height: 5,
+                        height: 15,
                       ),
                       new TextFormField(
                           validator: (val) =>
