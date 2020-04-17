@@ -1,3 +1,4 @@
+import 'package:fix_me_app/Login/login.dart';
 import 'package:fix_me_app/Register/Register-Fuel.dart';
 import 'package:fix_me_app/Register/Register-Garage.dart';
 import 'package:fix_me_app/Register/Register-User.dart';
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: RegisterUser(),
+      home:Login(),
     );
   }
 }
