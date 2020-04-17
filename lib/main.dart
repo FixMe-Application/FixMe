@@ -1,5 +1,8 @@
-import 'package:fix_me_app/authentication/getStart.dart';
-import 'package:fix_me_app/authentication/login.dart';
+import 'package:fix_me_app/Register/Register-Fuel.dart';
+import 'package:fix_me_app/Register/Register-Garage.dart';
+import 'package:fix_me_app/Register/Register-User.dart';
+import 'package:fix_me_app/getStart.dart';
+import './Register/register.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -8,13 +11,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "FixMe App",
+      title: 'FixMe App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: GetStart(),
-      home: Login(),
+      home: RegisterUser(),
     );
   }
 }

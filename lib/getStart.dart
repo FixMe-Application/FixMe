@@ -1,5 +1,5 @@
-import 'package:fix_me_app/authentication/login.dart';
 import 'package:flutter/material.dart';
+
 
 class GetStart extends StatelessWidget {
   @override
