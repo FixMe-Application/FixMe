@@ -5,6 +5,7 @@ import 'package:fix_me_app/Register/Register-User.dart';
 import 'package:fix_me_app/getStart.dart';
 import './Register/register.dart';
 import 'package:flutter/material.dart';
+import 'HomePages/userHomePage.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,11 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'FixMe App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:Login(),
+      home:UserHomePage(),
     );
   }
 }

@@ -1,21 +1,24 @@
+import 'dart:convert';
+import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Register-Fuel.dart';
 import 'Register-Garage.dart';
 import 'Register-User.dart';
-
-
+import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
   @override
   _RegisterState createState() => _RegisterState();
 }
 
-void verify() {}
-
 String dropdownValue = 'As a Driver';
 
 class _RegisterState extends State<Register> {
+  TextEditingController fNameController = new TextEditingController();
+  TextEditingController lNameController = new TextEditingController();
+  TextEditingController emailController = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,17 +47,31 @@ class _RegisterState extends State<Register> {
                   textAlign: TextAlign.center,
                 ),
                 TextFormField(
+                  controller: fNameController,
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
                           borderSide:
                               const BorderSide(color: Colors.grey, width: 1.0)),
-                      labelText: 'Full Name',
-                      hintText: "Zeena Youhan"),
+                      labelText: 'First Name',
+                      hintText: "Zeena"),
                 ),
                 Container(
                   margin: const EdgeInsets.all(10),
                 ),
                 TextFormField(
+                  controller: lNameController,
+                  decoration: InputDecoration(
+                      border: const OutlineInputBorder(
+                          borderSide:
+                              const BorderSide(color: Colors.grey, width: 1.0)),
+                      labelText: 'Last Name',
+                      hintText: "Youhan"),
+                ),
+                Container(
+                  margin: const EdgeInsets.all(10),
+                ),
+                TextFormField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.grey)),
@@ -130,26 +147,49 @@ class _RegisterState extends State<Register> {
                   ),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
-                  onPressed: () {
+                  onPressed: () async {
+                    final userFName = fNameController.text;
+                    final userLName = lNameController.text;
+                    final email = emailController.text;
+
                     if (dropdownValue == "As a Mechanic") {
+                      final userType = dropdownValue;
+
                       return Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterGarage()));
+                              builder: (context) => RegisterGarage(
+                                  userFName, userLName, email, userType)));
                     } else if (dropdownValue == "As a Driver") {
+                      final userType = dropdownValue;
+
                       return Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterUser()));
+                              builder: (context) => RegisterUser(
+                                  userFName, userLName, email, userType)));
                     } else if (dropdownValue == "As a Fuel Supplier") {
+                      final userType = dropdownValue;
                       return Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => RegisterFuel()));
+                              builder: (context) => RegisterFuel(
+                                  userFName, userLName, email, userType)));
                     }
                   },
                 ),
               ],
             )))));
   }
+}
+
+Future<Post> createPost(String url, {Map body}) async {
+  return http.post(url, body: body).then((http.Response response) {
+    final int statusCode = response.statusCode;
+
+    if (statusCode < 200 || statusCode > 400 || json == null) {
+      throw new Exception("Error while fetching data");
+    }
+    return Post.fromJson(json.decode(response.body));
+  });
 }

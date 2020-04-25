@@ -1,28 +1,24 @@
+import 'package:fix_me_app/Register/register.dart';
+import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
-
-void verify() {}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'LOGIN',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: RegisterFuel(),
-    );
-  }
-}
-
 class RegisterFuel extends StatefulWidget {
+  final firstName;
+  final lastName;
+  final email;
+  final userType;
+
+  RegisterFuel(this.firstName, this.lastName, this.email, this.userType);
+
   @override
   _RegisterFuelState createState() => _RegisterFuelState();
 }
 
 class _RegisterFuelState extends State<RegisterFuel> {
+  static final regEndPoint =
+      'https://us-central1-fixme-app.cloudfunctions.net/api/users';
+
+  TextEditingController pNumControler = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,11 +50,10 @@ class _RegisterFuelState extends State<RegisterFuel> {
                     hintText: "0XXXXXXX"),
               ),
               RaisedButton(
-                child: Text("Verify", style: TextStyle(fontSize: 20)),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                onPressed: verify,
-              ),
+                  child: Text("Verify", style: TextStyle(fontSize: 20)),
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  onPressed: () {}),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -119,15 +114,33 @@ class _RegisterFuelState extends State<RegisterFuel> {
                 ),
               ),
               RaisedButton(
-                padding: const EdgeInsets.only(left: 120, right: 120),
-                child: Text(
-                  "Register",
-                  style: TextStyle(fontSize: 30),
-                ),
-                color: Theme.of(context).primaryColor,
-                textColor: Colors.white,
-                onPressed: verify,
-              ),
+                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  child: Text(
+                    "Register",
+                    style: TextStyle(fontSize: 30),
+                  ),
+                  color: Theme.of(context).primaryColor,
+                  textColor: Colors.white,
+                  onPressed: () async {
+                    try {
+                      Post newPost = new Post(
+                        uid: "9",
+                        firstName: widget.firstName,
+                        lastName: widget.lastName,
+                        phoneNumber: pNumControler.text,
+                        email: widget.email,
+                        userType: widget.userType);
+                    Post p = await createPost(regEndPoint,
+                        body: newPost.toMap());
+                    print(p.firstName + " you are superb!");
+                      
+                    } catch (err) {
+                      print('Caught error: $err');
+
+                    }
+                    
+                  }),
             ])))));
   }
 }
+
