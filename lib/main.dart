@@ -1,3 +1,4 @@
+import 'package:fix_me_app/views/menu%20pages/about_us.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -7,8 +8,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: Text('Hello') ,
-   
+      home: AboutPage(),
     );
   }
 }
