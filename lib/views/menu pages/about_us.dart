@@ -63,6 +63,7 @@ class _AboutPageState extends State<AboutPage> {
             ),
             Expanded(
               child: SizedBox(
+                width: 340.0,
                 height: 250.0,
                 child: _myListView(context),
               ),
@@ -85,7 +86,7 @@ class _AboutPageState extends State<AboutPage> {
       return ListView.builder(
         itemCount: titles.length,
         itemBuilder: (context, index) {
-          return Card( //                           
+          return Card(                            
             child: ListTile(
               leading: Icon(icons[index], size: 40),
               title: Text(titles[index], style: TextStyle(fontWeight: FontWeight.bold),),
