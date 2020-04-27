@@ -88,7 +88,7 @@ class _AboutPageState extends State<AboutPage> {
           return Card( //                           
             child: ListTile(
               leading: Icon(icons[index], size: 40),
-              title: Text(titles[index]),
+              title: Text(titles[index], style: TextStyle(fontWeight: FontWeight.bold),),
               subtitle: Text(subTitles[index]),
             ),
           );
