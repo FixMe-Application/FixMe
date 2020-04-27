@@ -50,9 +50,9 @@ class _AboutPageState extends State<AboutPage> {
                ),
              ),
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
               child: Text(
-                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.",
+               "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.",
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 12.0
@@ -61,9 +61,37 @@ class _AboutPageState extends State<AboutPage> {
                 textAlign: TextAlign.justify,
               ),
             ),
+            Expanded(
+              child: SizedBox(
+                height: 250.0,
+                child: _myListView(context),
+              ),
+            ),
            ],
          ),
        ),
     );
   }
 }
+
+ Widget _myListView(BuildContext context) {
+
+      final titles = ['Email', 'Contact Us - Customers', 'Contact Us - Service Providers'];
+
+      final subTitles = ['fixme@gmail.com', '+94 112280780', '+94 112280790'];
+
+      final icons = [Icons.email, Icons.phone, Icons.phone];
+
+      return ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return Card( //                           
+            child: ListTile(
+              leading: Icon(icons[index], size: 40),
+              title: Text(titles[index]),
+              subtitle: Text(subTitles[index]),
+            ),
+          );
+        },
+      );
+    }
