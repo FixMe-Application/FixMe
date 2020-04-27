@@ -15,11 +15,11 @@ class _AboutPageState extends State<AboutPage> {
          backgroundColor: Colors.lightBlue,
            leading: IconButton(
              icon: Icon(
-               Icons.arrow_back_ios,
+               Icons.arrow_back,
                color: Colors.white,
              ),
              onPressed: (){
-               
+
              },
            ),
          title: Text(
@@ -28,6 +28,29 @@ class _AboutPageState extends State<AboutPage> {
              fontSize: 20.0,
              color:Colors.white
            ),
+         ),
+       ),
+       body: Container(
+         child: Column(
+           children: <Widget>[
+             Center(
+               heightFactor: 1.5,
+               child: Container(
+                 width: 150.0,
+                 height: 150.0,
+                 decoration: BoxDecoration(
+                   shape: BoxShape.circle,
+                   image: DecorationImage(
+                     fit: BoxFit.fill,
+                     image: AssetImage(
+                       "assets/images/image-front.png"
+                     )
+                   ),
+                 ),
+               ),
+             ),
+             
+           ],
          ),
        ),
     );
