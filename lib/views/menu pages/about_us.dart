@@ -34,7 +34,7 @@ class _AboutPageState extends State<AboutPage> {
          child: Column(
            children: <Widget>[
              Center(
-               heightFactor: 1.5,
+               heightFactor: 1.25,
                child: Container(
                  width: 150.0,
                  height: 150.0,
@@ -49,7 +49,18 @@ class _AboutPageState extends State<AboutPage> {
                  ),
                ),
              ),
-             
+            Padding(
+              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+              child: Text(
+                "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal.",
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 12.0
+                ),
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.justify,
+              ),
+            ),
            ],
          ),
        ),
