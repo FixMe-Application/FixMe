@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fix_me_app/widgets/header.dart';
 
 class TasksPage extends StatefulWidget {
   TasksPage({Key key}) : super(key: key);
@@ -11,25 +12,7 @@ class _TasksPageState extends State<TasksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-         backgroundColor: Colors.lightBlue,
-           leading: IconButton(
-             icon: Icon(
-               Icons.arrow_back,
-               color: Colors.white,
-             ),
-             onPressed: (){
-
-             },
-           ),
-         title: Text(
-           "My Tasks",
-           style: TextStyle(
-             fontSize: 20.0,
-             color:Colors.white
-           ),
-         ),
-       ),
+      appBar: header(titleText: "Tasks"),
        body: DefaultTabController(
          length: 3,
          child: Column(
