@@ -13,7 +13,7 @@ AppBar header({ bool isAppTitle = false, String titleText}){
       },
     ),
     title: Text(
-      isAppTitle ? 'About Us' : titleText,
+      isAppTitle ? 'Enter your title' : titleText,
       style: TextStyle(
         fontSize: 20.0,
         color: Colors.white

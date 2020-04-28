@@ -1,3 +1,4 @@
+import 'package:fix_me_app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
 class AboutPage extends StatefulWidget {
@@ -11,25 +12,7 @@ class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       appBar: AppBar(
-         backgroundColor: Colors.lightBlue,
-           leading: IconButton(
-             icon: Icon(
-               Icons.arrow_back,
-               color: Colors.white,
-             ),
-             onPressed: (){
-
-             },
-           ),
-         title: Text(
-           "About Us",
-           style: TextStyle(
-             fontSize: 20.0,
-             color:Colors.white
-           ),
-         ),
-       ),
+       appBar: header(titleText: 'About Us'),
        body: Container(
          child: Column(
            children: <Widget>[
