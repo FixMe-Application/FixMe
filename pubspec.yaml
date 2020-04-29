@@ -20,6 +20,10 @@ dependencies:
   google_sign_in: ^4.4.3
   flutter_facebook_login: ^3.0.0
   http: ^0.12.0+4
+  location: ^2.3.5
+  permission: ^0.1.7
+  geolocator: ^5.3.1
+
 
 dev_dependencies:
   flutter_test:
@@ -38,5 +42,8 @@ flutter:
    - assets/googlelogin.png
    - assets/fblogin.png
    - assets/applelogin.png
+   - assets/currentLocation.png
+   - assets/breakdown_btn.png
+   - assets/fuelempty_btn.png
 
 

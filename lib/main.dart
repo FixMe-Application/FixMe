@@ -6,6 +6,7 @@ import 'package:fix_me_app/getStart.dart';
 import './Register/register.dart';
 import 'package:flutter/material.dart';
 import 'HomePages/userHomePage.dart';
+import './test.dart';
 
 void main() => runApp(MyApp());
 
