@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'HomePages/userHomePage.dart';
 import './test.dart';
 import 'HomePages/mechanicHomePage2.dart';
+import 'HomePages/fuelHomePage2.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:MechanicHomePage2(),
+      home:FuelHomePage2(),
     );
   }
 }

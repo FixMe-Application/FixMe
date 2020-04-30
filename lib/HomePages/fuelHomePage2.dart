@@ -7,16 +7,16 @@ import 'sideNav.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_polyline/google_map_polyline.dart';
 
-class MechanicHomePage2 extends StatefulWidget {
-  MechanicHomePage2({Key key, this.title}) : super(key: key);
+class FuelHomePage2 extends StatefulWidget {
+  FuelHomePage2({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _MechanicHomePage2State createState() => _MechanicHomePage2State();
+  _FuelHomePage2State createState() => _FuelHomePage2State();
 }
 
-class _MechanicHomePage2State extends State<MechanicHomePage2> {
+class _FuelHomePage2State extends State<FuelHomePage2> {
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;
@@ -41,10 +41,9 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
     ],
   ];
 
-   LatLng _originLocation;
+  LatLng _originLocation;
 
   LatLng _destinationLocation =LatLng(6.4204138, 80.0049826);
-
 
   _getPolylinesWithLocation() async {
     List<LatLng> _coordinates =
