@@ -7,16 +7,16 @@ import 'sideNav.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_polyline/google_map_polyline.dart';
 
-class UserHomePage extends StatefulWidget {
-  UserHomePage({Key key, this.title}) : super(key: key);
+class MechanicHomePage2 extends StatefulWidget {
+  MechanicHomePage2({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _UserHomePageState createState() => _UserHomePageState();
+  _MechanicHomePage2State createState() => _MechanicHomePage2State();
 }
 
-class _UserHomePageState extends State<UserHomePage> {
+class _MechanicHomePage2State extends State<MechanicHomePage2> {
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;
@@ -106,12 +106,10 @@ class _UserHomePageState extends State<UserHomePage> {
         ),
         appBar: appBarWidget(),
         body: Stack(
-          children: <Widget>[mapWidget(), buttonBar()],
+          children: <Widget>[mapWidget(),buttonBar()],
         ),
-        // bottomNavigationBar: buttonBar(),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 200),
-          child: FloatingActionButton(
+
+        floatingActionButton: FloatingActionButton(
             onPressed: () => {
               getCurrentLocation(),
             },
@@ -120,7 +118,7 @@ class _UserHomePageState extends State<UserHomePage> {
             ),
             backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
           ),
-        ));
+        );
   }
 
   Widget mapWidget() {
@@ -212,10 +210,8 @@ class _UserHomePageState extends State<UserHomePage> {
     return byteData.buffer.asUint8List();
   }
 
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  Widget buttonBar() {
+       Widget buttonBar() {
     return Align(
         alignment: Alignment.bottomCenter,
         child: ButtonBar(
@@ -227,7 +223,7 @@ class _UserHomePageState extends State<UserHomePage> {
               width: 170,
               child: RaisedButton(
                 onPressed: () {
-                  _modalBottomSheetMechanics();
+                 
                 },
                 child: Column(
                   children: <Widget>[
@@ -235,102 +231,20 @@ class _UserHomePageState extends State<UserHomePage> {
                       margin: EdgeInsets.all(10),
                       height: 130,
                       width: 170,
-                      child: new Image.asset("assets/breakdown_btn.png"),
+                      child: new Image.asset("assets/navigate_btn.png"),
                       color: Color.fromARGB(255, 3, 27, 47),
                     ),
                     new Text(
-                      'Break Down',
+                      'Navigate',
                       style: TextStyle(fontSize: 20),
                     ),
                   ],
                 ),
               ),
             ),
-            new Container(
-              margin: EdgeInsets.all(10),
-              height: 180,
-              width: 170,
-              child: RaisedButton(
-                onPressed: () {
-                  _modalBottomSheetFuel();
-                },
-                child: Column(
-                  children: <Widget>[
-                    new Container(
-                      margin: EdgeInsets.all(10),
-                      height: 130,
-                      width: 170,
-                      child: new Image.asset("assets/fuelempty_btn.png"),
-                      color: Colors.grey,
-                    ),
-                    new Text('Fuel Empty', style: TextStyle(fontSize: 20)),
-                  ],
-                ),
-              ),
-            )
+           
           ],
         ));
-  }
 
-  _modalBottomSheetFuel() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) => Container(
-            height: 500,
-            child: Column(children: <Widget>[
-              SizedBox(
-                height: 20,
-              ),
-              Text("Empty you Fuel-Tank?",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              RaisedButton(
-                  child: Text(
-                    "Get Directions",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                    ),
-                  ),
-                  color: Colors.blue,
-                  onPressed: () {}),
-            ])));
-  }
-
-  _modalBottomSheetMechanics() {
-    showModalBottomSheet(
-        context: context,
-        builder: (context) => Container(
-            height: 500,
-            child: Column(children: <Widget>[
-              SizedBox(
-                height: 20,
-              ),
-              Text("Broke your vehical?",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
-                  )),
-              SizedBox(
-                height: 20,
-              ),
-              RaisedButton(
-                  child: Text(
-                    "Get Directions",
-                    style: TextStyle(
-                      fontSize: 25,
-                      color: Colors.white,
-                    ),
-                  ),
-                  color: Colors.blue,
-                  onPressed: () {
-                    _getPolylinesWithLocation();
-                  }),
-            ])));
-  }
-}
+ }
+ }

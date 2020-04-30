@@ -25,6 +25,7 @@ dependencies:
   geolocator: ^5.3.1
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -45,5 +46,6 @@ flutter:
    - assets/currentLocation.png
    - assets/breakdown_btn.png
    - assets/fuelempty_btn.png
+   - assets/navigate_btn.png
 
 

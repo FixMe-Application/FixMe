@@ -28,7 +28,7 @@
             android:value="@string/facebook_app_id"/>   
 
         <meta-data android:name="com.google.android.geo.API_KEY"
-               android:value="AIzaSyBJLXOH5s6cE1HBNJdjL2938um8OKBujm8"/>
+               android:value="AIzaSyBfeLPhKwrbyaQaCfe1W3qH9B-uz26lMRw"/>
 
         <activity android:name="com.facebook.FacebookActivity"
         android:configChanges=
