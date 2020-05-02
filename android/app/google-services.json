@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "328233365339",
+    "firebase_url": "https://fixme-app.firebaseio.com",
+    "project_id": "fixme-app",
+    "storage_bucket": "fixme-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:328233365339:android:8111f3512885222807347e",
+        "android_client_info": {
+          "package_name": "com.example.fix_me_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "328233365339-vd082sji5ec5rlnig4d91gt2lp4sdjla.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.fix_me_app",
+            "certificate_hash": "4b7418805b54ad325a5837fdbca4099ab29a13d9"
+          }
+        },
+        {
+          "client_id": "328233365339-l9931otb9atqhq0j4lg34er1pu1r5ltv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0cKap-07fbvdtZOQ0h0bWHOPnAVt1Vig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "328233365339-l9931otb9atqhq0j4lg34er1pu1r5ltv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
