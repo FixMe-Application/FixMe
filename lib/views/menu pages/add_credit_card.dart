@@ -42,28 +42,13 @@ class AddCardState extends State < AddCard > {
                 ),
               ),
             ),
-            // FlatButton(
-            //   color: Colors.blue,
-            //   onPressed: () {},
-            //   shape: StadiumBorder(),
-            //   child: Padding(
-            //     padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
-            //       child: Text(
-            //         "Add",
-            //         style: TextStyle(
-            //           color: Colors.white,
-            //           fontSize: 15.0
-            //         ),
-
-            //       ),
-            //   ),
-            // )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: (){},
-        child: Icon(Icons.done),
+        label: Text('Add'),
+        icon: Icon(Icons.done),
       ),
     );
   }
