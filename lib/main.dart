@@ -1,4 +1,5 @@
 import 'package:fix_me_app/views/menu%20pages/about_us.dart';
+import 'package:fix_me_app/views/menu%20pages/add_credit_card.dart';
 import 'package:fix_me_app/views/menu%20pages/payments_settings.dart';
 import 'package:fix_me_app/views/menu%20pages/tasks.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      home: PaymentSettings(),
+      home: AddCard(),
     );
   }
 }
