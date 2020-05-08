@@ -1,5 +1,5 @@
 import 'package:fix_me_app/Register/register.dart';
-import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/Authentication/models/registerModel.dart';
 import 'package:flutter/material.dart';
 
 String dropdownValue = 'I have a garage';

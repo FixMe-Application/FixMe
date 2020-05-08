@@ -1,5 +1,5 @@
 import 'package:fix_me_app/Register/register.dart';
-import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/Authentication/models/registerModel.dart';
 import 'package:flutter/material.dart';
 
 class RegisterUser extends StatefulWidget {
@@ -89,8 +89,8 @@ class _RegisterUserState extends State<RegisterUser> {
                           phoneNumber: pNumControler.text,
                           email: widget.email,
                           userType: widget.userType);
-                      Post p = await createPost(regEndPoint,
-                          body: newPost.toMap());
+                      Post p =
+                          await createPost(regEndPoint, body: newPost.toMap());
                       print(p.firstName + " you are superb!");
                     } catch (e) {
                       print("Caught error $e");

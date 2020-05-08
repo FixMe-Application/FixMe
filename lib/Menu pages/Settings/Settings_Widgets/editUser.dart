@@ -1,9 +1,8 @@
+import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/password.dart';
+import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/phoneNo.dart';
+import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/profilePic.dart';
+import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/userName.dart';
 import 'package:flutter/material.dart';
-import 'package:fix_me_app/Settings/Edit_User_Widgets/profilePic.dart';
-import 'package:fix_me_app/Settings/Edit_User_Widgets/userName.dart';
-import 'package:fix_me_app/Settings/Edit_User_Widgets/phoneNo.dart';
-import 'package:fix_me_app/Settings/Edit_User_Widgets/password.dart';
-
 
 class EditUser extends StatelessWidget {
   @override

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/Authentication/models/registerModel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'Register-Fuel.dart';
