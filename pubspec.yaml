@@ -1,16 +1,15 @@
 name: fix_me_app
 description: A new Flutter project.
 
-
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.2.0 <3.0.0"
+  sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
+  flutter_rating_bar: ^3.0.1+1
   flutter:
     sdk: flutter
-
 
   cupertino_icons: ^0.1.2
   firebase_auth: ^0.14.0+5
@@ -24,28 +23,21 @@ dependencies:
   permission: ^0.1.7
   geolocator: ^5.3.1
 
-
+  flutter_credit_card: ^0.1.3
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-
 flutter:
-
-
   uses-material-design: true
 
-
   assets:
-   - assets/image-front.png
-   - assets/googlelogin.png
-   - assets/fblogin.png
-   - assets/applelogin.png
-   - assets/currentLocation.png
-   - assets/breakdown_btn.png
-   - assets/fuelempty_btn.png
-   - assets/navigate_btn.png
-
-
+    - assets/image-front.png
+    - assets/googlelogin.png
+    - assets/fblogin.png
+    - assets/applelogin.png
+    - assets/currentLocation.png
+    - assets/breakdown_btn.png
+    - assets/fuelempty_btn.png
+    - assets/navigate_btn.png
