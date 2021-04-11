@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class GetStart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -9,7 +8,6 @@ class GetStart extends StatelessWidget {
       body: new Stack(
         children: <Widget>[
           Column(
-            
             children: <Widget>[
               new Container(
                 color: Colors.blue[100].withOpacity(0.5),
@@ -39,28 +37,28 @@ class GetStart extends StatelessWidget {
                     shape: BoxShape.circle,
                     image: new DecorationImage(
                         fit: BoxFit.fill,
-                        image: new AssetImage("assets/image-front.png"))),
+                        image: new AssetImage("./assets/fblogin.png"))),
               )),
           Positioned(
-            top: 600,
-            left: 65,
-            child: new RaisedButton(
-              onPressed: ()=> {"Button pressed"},
-              color: Colors.blue,
-              padding: EdgeInsets.symmetric(horizontal:100, vertical: 10),
-              child: new Text(
-                
-                "Let's Start",
-                style: new TextStyle(
-                  color: Colors.white,
-                  fontSize: 16.9,
-                  fontWeight: FontWeight.w600,
+              top: 600,
+              left: 65,
+              child: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 100, vertical: 10),
+                child: ElevatedButton(
+                  onPressed: () => {"Button pressed"},
+                  style: ElevatedButton.styleFrom(primary: Colors.blue),
+                  child: new Text(
+                    "Let's Start",
+                    style: new TextStyle(
+                      color: Colors.white,
+                      fontSize: 16.9,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
                 ),
-              ),
-            ),
-          ),
+              )),
         ],
-        overflow: Overflow.visible,
+        clipBehavior: Clip.hardEdge,
       ),
     );
   }
