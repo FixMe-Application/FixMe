@@ -1,4 +1,4 @@
-# fix_me_app
+# fix_me
 
 A new Flutter project.
 
