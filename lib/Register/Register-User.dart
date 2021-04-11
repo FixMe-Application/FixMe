@@ -27,20 +27,22 @@ class _RegisterUserState extends State<RegisterUser> {
           backgroundColor: Colors.lightBlueAccent,
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30),
           ),
           centerTitle: true,
         ),
         body: Container(
             color: Colors.white,
-            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+            padding: const EdgeInsets.only(left: 20, top: 60, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
               Text(
                 "Step 2/2",
-                style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                style: TextStyle(fontSize: 25, color: Colors.lightBlue),
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20,
               ),
               TextFormField(
                 controller: pNumControler,
@@ -51,11 +53,17 @@ class _RegisterUserState extends State<RegisterUser> {
                     labelText: 'Phone Number',
                     hintText: "0XXXXXXX"),
               ),
+              SizedBox(
+                height: 10,
+              ),
               RaisedButton(
                   child: Text("Verify", style: TextStyle(fontSize: 20)),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   onPressed: () {}),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -65,18 +73,21 @@ class _RegisterUserState extends State<RegisterUser> {
                 ),
               ),
               Container(
-                margin: const EdgeInsets.only(left: 10, top: 60, bottom: 70),
+                margin: const EdgeInsets.only(left: 10, top: 40, bottom: 70),
                 child: Text(
                   "By creating an account you agree to our Terms of Service and Privacy Policy",
                   style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ),
+              SizedBox(
+                height: 200,
+              ),
               RaisedButton(
-                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  padding: const EdgeInsets.only(left: 155, right: 155),
                   child: Text(
                     "Register",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 20),
                   ),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,

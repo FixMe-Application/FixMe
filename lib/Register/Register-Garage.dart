@@ -1,3 +1,4 @@
+import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/Authentication/models/registerModel.dart';
 import 'package:flutter/material.dart';
@@ -28,20 +29,22 @@ class _RegisterGarageState extends State<RegisterGarage> {
           backgroundColor: Colors.lightBlueAccent,
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30),
           ),
           centerTitle: true,
         ),
         body: Container(
             color: Colors.white,
-            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+            padding: const EdgeInsets.only(left: 20, top: 60, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
               Text(
                 "Step 2/2",
-                style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                style: TextStyle(fontSize: 25, color: Colors.lightBlue),
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20,
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -51,11 +54,17 @@ class _RegisterGarageState extends State<RegisterGarage> {
                     labelText: 'Phone Number',
                     hintText: "0XXXXXXX"),
               ),
+              SizedBox(
+                height: 10,
+              ),
               RaisedButton(
                   child: Text("Verify", style: TextStyle(fontSize: 20)),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   onPressed: () {}),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -69,9 +78,9 @@ class _RegisterGarageState extends State<RegisterGarage> {
               ),
               DropdownButton<String>(
                   value: dropdownValue,
-                  iconSize: 29,
+                  iconSize: 20,
                   elevation: 2,
-                  style: TextStyle(fontSize: 25, color: Colors.black),
+                  style: TextStyle(fontSize: 20, color: Colors.black),
                   onChanged: (String newValue) {
                     setState(() {
                       dropdownValue = newValue;
@@ -95,24 +104,13 @@ class _RegisterGarageState extends State<RegisterGarage> {
                         ),
                         tooltip: "Explorer",
                         iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Explorer")
-                  ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.add_a_photo, color: Colors.blue),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Photos"),
-                  ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.add, color: Colors.blue),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Photos"),
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LocationSelection()));
+                        }),
+                    Text("Select your location in the map")
                   ]),
 
                   //  Icon(
@@ -135,30 +133,32 @@ class _RegisterGarageState extends State<RegisterGarage> {
                   textAlign: TextAlign.center,
                 ),
               ),
+              SizedBox(
+                height: 100,
+              ),
               RaisedButton(
-                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  padding: const EdgeInsets.only(left: 155, right: 155),
                   child: Text(
                     "Register",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 20),
                   ),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
-                  onPressed: () async {try {
-                     Post newPost = new Post(
-                        uid: "5",
-                        firstName: widget.firstName,
-                        lastName: widget.lastName,
-                        phoneNumber: pNumControler.text,
-                        email: widget.email,
-                        userType: widget.userType);
-                    Post p = await createPost(regEndPoint,
-                        body: newPost.toMap());
-                    print(p.firstName + " you are superb!");
-                    
-                  } catch (e) {
-                    print('Caught error: $e');
-                  }
-                   
+                  onPressed: () async {
+                    try {
+                      Post newPost = new Post(
+                          uid: "5",
+                          firstName: widget.firstName,
+                          lastName: widget.lastName,
+                          phoneNumber: pNumControler.text,
+                          email: widget.email,
+                          userType: widget.userType);
+                      Post p =
+                          await createPost(regEndPoint, body: newPost.toMap());
+                      print(p.firstName + " you are superb!");
+                    } catch (e) {
+                      print('Caught error: $e');
+                    }
                   }),
             ])))));
   }

@@ -47,26 +47,22 @@ class _LoginState extends State<Login> {
                   key: _formKey,
                   child: new Column(
                     children: <Widget>[
-
-                      Padding(padding: new EdgeInsets.all(8.0)),
-                      SizedBox(height:15),
+                      Padding(padding: new EdgeInsets.all(10.0)),
+                      SizedBox(height: 15),
                       Container(
-                        
                         child: new RaisedButton(
-                          onPressed: () async{
+                          onPressed: () async {
                             bool result = await AuthService().loginWithGoogle();
-                            if(!result){
+                            if (!result) {
                               print("Error login with Google");
                             }
                             print("Login Successful with Google");
-
                           },
                           color: Colors.blue[50].withAlpha(220),
                           padding:
                               EdgeInsets.symmetric(horizontal: 94, vertical: 7),
                           child: Row(
                             children: <Widget>[
-                              
                               new Image.asset(
                                 "./assets/googlelogin.png",
                                 height: 25,
@@ -85,15 +81,18 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 15,
+                      ),
                       Container(
                         child: new RaisedButton(
                           onPressed: () async {
-                            bool result = await AuthService().loginWithFacebook();
-                            if(!result){
+                            bool result =
+                                await AuthService().loginWithFacebook();
+                            if (!result) {
                               print("Error login with Google");
                             }
                             print("Login Successful with Google");
-
                           },
                           color: Colors.blue[50].withAlpha(220),
                           padding:
@@ -118,7 +117,7 @@ class _LoginState extends State<Login> {
                           ),
                         ),
                       ),
-                      SizedBox(height: 30),
+                      SizedBox(height: 40),
                       new Row(
                         children: <Widget>[
                           Expanded(
@@ -141,7 +140,7 @@ class _LoginState extends State<Login> {
                         ],
                       ),
                       SizedBox(
-                        height: 15,
+                        height: 30,
                       ),
                       new TextFormField(
                           validator: (val) =>
@@ -153,7 +152,7 @@ class _LoginState extends State<Login> {
                               hintText: 'Enter your Email',
                               icon: new Icon(Icons.person))),
                       SizedBox(
-                        height: 5.0,
+                        height: 10.0,
                       ),
                       new TextFormField(
                         validator: (val) => val.length < 6
@@ -202,7 +201,8 @@ class _LoginState extends State<Login> {
                                       fontSize: 16.0,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                onTap: () => {print("Forgotten password screen!")},
+                                onTap: () =>
+                                    {print("Forgotten password screen!")},
                               )),
                         ],
                       ),
@@ -215,7 +215,7 @@ class _LoginState extends State<Login> {
               ),
             ),
             SizedBox(
-              height: 10.0,
+              height: 20.0,
             ),
             new Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -256,11 +256,12 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(
-              height: 40,
+              height: 100,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               child: new RaisedButton(
+                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 10),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     dynamic result =

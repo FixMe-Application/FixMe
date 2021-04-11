@@ -26,20 +26,22 @@ class _RegisterFuelState extends State<RegisterFuel> {
           backgroundColor: Colors.lightBlueAccent,
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30),
           ),
           centerTitle: true,
         ),
         body: Container(
             color: Colors.white,
-            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+            padding: const EdgeInsets.only(left: 20, top: 60, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
               Text(
                 "Step 2/2",
-                style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                style: TextStyle(fontSize: 25, color: Colors.lightBlue),
                 textAlign: TextAlign.center,
+              ),
+              SizedBox(
+                height: 20,
               ),
               TextFormField(
                 decoration: InputDecoration(
@@ -49,11 +51,17 @@ class _RegisterFuelState extends State<RegisterFuel> {
                     labelText: 'Phone Number',
                     hintText: "0XXXXXXX"),
               ),
+              SizedBox(
+                height: 10,
+              ),
               RaisedButton(
                   child: Text("Verify", style: TextStyle(fontSize: 20)),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   onPressed: () {}),
+              SizedBox(
+                height: 10,
+              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -65,6 +73,9 @@ class _RegisterFuelState extends State<RegisterFuel> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
+                  SizedBox(
+                    height: 10,
+                  ),
                   Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
                     IconButton(
                         icon: Icon(
@@ -109,38 +120,37 @@ class _RegisterFuelState extends State<RegisterFuel> {
                 margin: const EdgeInsets.only(left: 10, top: 60, bottom: 70),
                 child: Text(
                   "By creating an account you agree to our Terms of Service and Privacy Policy",
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 15),
                   textAlign: TextAlign.center,
                 ),
               ),
+              SizedBox(
+                height: 80,
+              ),
               RaisedButton(
-                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  padding: const EdgeInsets.only(left: 155, right: 155),
                   child: Text(
                     "Register",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 20),
                   ),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,
                   onPressed: () async {
                     try {
                       Post newPost = new Post(
-                        uid: "9",
-                        firstName: widget.firstName,
-                        lastName: widget.lastName,
-                        phoneNumber: pNumControler.text,
-                        email: widget.email,
-                        userType: widget.userType);
-                    Post p = await createPost(regEndPoint,
-                        body: newPost.toMap());
-                    print(p.firstName + " you are superb!");
-                      
+                          uid: "9",
+                          firstName: widget.firstName,
+                          lastName: widget.lastName,
+                          phoneNumber: pNumControler.text,
+                          email: widget.email,
+                          userType: widget.userType);
+                      Post p =
+                          await createPost(regEndPoint, body: newPost.toMap());
+                      print(p.firstName + " you are superb!");
                     } catch (err) {
                       print('Caught error: $err');
-
                     }
-                    
                   }),
             ])))));
   }
 }
-

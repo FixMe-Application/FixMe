@@ -25,7 +25,6 @@ class _RegisterState extends State<Register> {
         appBar: AppBar(
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30),
           ),
           centerTitle: true,
         ),
@@ -38,13 +37,19 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Text(
                   "CREATE ACCOUNT",
-                  style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                  style: TextStyle(fontSize: 25, color: Colors.lightBlue),
                   textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 10,
                 ),
                 Text(
                   "Step 1/2",
-                  style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                  style: TextStyle(fontSize: 25, color: Colors.lightBlue),
                   textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 20,
                 ),
                 TextFormField(
                   controller: fNameController,
@@ -101,6 +106,9 @@ class _RegisterState extends State<Register> {
                     hintText: "XXXXXXX",
                   ),
                 ),
+                SizedBox(
+                  height: 20,
+                ),
                 Container(
                   margin: const EdgeInsets.all(1),
                 ),
@@ -110,20 +118,24 @@ class _RegisterState extends State<Register> {
                     color: Colors.blue,
                   ),
                   Container(
-                    margin:
-                        const EdgeInsets.only(right: 220, top: 10, left: 10),
+                    margin: const EdgeInsets.only(right: 220, top: 0, left: 10),
                     child: Text(
                       "User Type:",
-                      style: TextStyle(fontSize: 25, color: Colors.blue),
+                      style: TextStyle(fontSize: 20, color: Colors.blue),
                       textAlign: TextAlign.left,
                     ),
                   ),
                 ]),
                 DropdownButton<String>(
                     value: dropdownValue,
-                    iconSize: 24,
-                    elevation: 16,
-                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    iconSize: 20,
+                    dropdownColor: Colors.blueGrey[100],
+                    focusColor: Colors.blue[400],
+                    elevation: 50,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.black,
+                    ),
                     onChanged: (String newValue) {
                       setState(() {
                         dropdownValue = newValue;
@@ -139,11 +151,14 @@ class _RegisterState extends State<Register> {
                         child: Text(value),
                       );
                     }).toList()),
+                SizedBox(
+                  height: 60,
+                ),
                 RaisedButton(
-                  padding: const EdgeInsets.only(left: 140, right: 140),
+                  padding: const EdgeInsets.only(left: 155, right: 155),
                   child: Text(
                     "Next",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 20),
                   ),
                   color: Theme.of(context).primaryColor,
                   textColor: Colors.white,

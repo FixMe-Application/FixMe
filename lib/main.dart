@@ -1,4 +1,4 @@
-
+import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Login/login.dart';
 import 'package:fix_me_app/Register/Register-Fuel.dart';
 import 'package:fix_me_app/Register/Register-Garage.dart';
@@ -21,8 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:UserHomePage(),
+      home: Register(),
     );
   }
 }
-
