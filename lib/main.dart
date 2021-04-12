@@ -1,6 +1,7 @@
-
-import 'package:fix_me_app/HomePages/userHomePage.dart';
 import 'package:flutter/material.dart';
+
+
+import 'getStart.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,9 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:UserHomePage(),
+      home: GetStart(),
     );
   }
 }
-
-
