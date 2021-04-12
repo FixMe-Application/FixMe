@@ -28,14 +28,16 @@ class _RegisterFuelState extends State<RegisterFuel> {
           backgroundColor: Colors.lightBlue[900],
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30, color: Colors.yellow[700]),
+            style: TextStyle(
+                fontSize: SizeConfig.screenWidth / 30,
+                color: Colors.yellow[700]),
           ),
           centerTitle: true,
         ),
         body: Container(
             height: SizeConfig.screenHeight,
             color: Colors.grey[800],
-            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+            padding: const EdgeInsets.only(left: 20, top: 50, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
@@ -141,13 +143,14 @@ class _RegisterFuelState extends State<RegisterFuel> {
                 ),
               ),
               RaisedButton(
-                  padding: const EdgeInsets.only(left: 120, right: 120),
+                  padding: EdgeInsets.only(
+                      left: SizeConfig.left / 3, right: SizeConfig.right / 3),
                   child: Text(
-                    "Register",
-                    style: TextStyle(fontSize: 30),
+                    "Submit",
+                    style: TextStyle(fontSize: SizeConfig.screenWidth / 20),
                   ),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
+                  color: Colors.lightBlue[900],
+                  textColor: Colors.yellow[700],
                   onPressed: () async {
                     try {
                       Post newPost = new Post(

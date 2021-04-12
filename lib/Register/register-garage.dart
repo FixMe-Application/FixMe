@@ -79,6 +79,7 @@ class _RegisterGarageState extends State<RegisterGarage> {
                 margin: EdgeInsets.all(10),
               ),
               DropdownButton<String>(
+                  dropdownColor: Colors.grey[800],
                   isExpanded: true,
                   value: dropdownValue,
                   iconSize: 29,
