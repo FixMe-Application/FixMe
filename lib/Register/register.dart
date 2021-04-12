@@ -68,14 +68,15 @@ class _RegisterState extends State<Register> {
                   margin: const EdgeInsets.all(10),
                 ),
                 TextFormField(
-                  controller: lNameController,
-                  decoration: InputDecoration(
+                    controller: lNameController,
+                    decoration: InputDecoration(
                       border: const OutlineInputBorder(
                           borderSide: const BorderSide(
                               color: Colors.white, width: 1.0)),
                       labelText: 'Last Name',
-                      hintText: "Youhan"),
-                ),
+                      hintText: "Youhan",
+                      hintStyle: TextStyle(color: Colors.white),
+                    )),
                 Container(
                   margin: const EdgeInsets.all(10),
                 ),
@@ -86,6 +87,7 @@ class _RegisterState extends State<Register> {
                         borderSide: const BorderSide(color: Colors.grey)),
                     labelText: 'Email',
                     hintText: "zeena2gmail.com",
+                    hintStyle: TextStyle(color: Colors.white),
                   ),
                 ),
                 Container(
@@ -97,6 +99,7 @@ class _RegisterState extends State<Register> {
                         borderSide: const BorderSide(color: Colors.grey)),
                     labelText: 'Password',
                     hintText: "XXXXXXX",
+                    hintStyle: TextStyle(color: Colors.white),
                   ),
                 ),
                 Container(
@@ -104,11 +107,11 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey)),
-                    labelText: 'Confirm Password',
-                    hintText: "XXXXXXX",
-                  ),
+                      border: const OutlineInputBorder(
+                          borderSide: const BorderSide(color: Colors.grey)),
+                      labelText: 'Confirm Password',
+                      hintText: "XXXXXXX",
+                      hintStyle: TextStyle(color: Colors.white)),
                 ),
                 Container(
                   margin: const EdgeInsets.all(1),
@@ -124,7 +127,7 @@ class _RegisterState extends State<Register> {
                         top: 10,
                         left: SizeConfig.left / 4),
                     child: Text(
-                      "User Type",
+                      "User type",
                       style: TextStyle(
                           fontSize: SizeConfig.screenWidth / 20,
                           color: Colors.white),
