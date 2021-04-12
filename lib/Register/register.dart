@@ -1,10 +1,11 @@
 import 'dart:convert';
-import 'package:fix_me_app/Authentication/models/registerModel.dart';
+import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Register-Fuel.dart';
-import 'Register-Garage.dart';
-import 'Register-User.dart';
+import 'register-fuel.dart';
+import 'register-garage.dart';
+import 'register-user.dart';
 import 'package:http/http.dart' as http;
 
 class Register extends StatefulWidget {
@@ -21,16 +22,20 @@ class _RegisterState extends State<Register> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepPurple[900],
           title: Text(
             "Register",
-            style: TextStyle(fontSize: 30),
+            style: TextStyle(
+                fontSize: SizeConfig.screenWidth / 20,
+                color: Colors.yellow[700]),
           ),
           centerTitle: true,
         ),
         body: Container(
-            color: Colors.white,
+            color: Colors.grey[800],
             padding: const EdgeInsets.only(left: 20, top: 40, right: 20),
             child: SingleChildScrollView(
                 child: Form(
@@ -38,20 +43,24 @@ class _RegisterState extends State<Register> {
               children: <Widget>[
                 Text(
                   "CREATE ACCOUNT",
-                  style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                  style: TextStyle(
+                      fontSize: SizeConfig.screenWidth / 20,
+                      color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   "Step 1/2",
-                  style: TextStyle(fontSize: 30, color: Colors.lightBlue),
+                  style: TextStyle(
+                      fontSize: SizeConfig.screenWidth / 20,
+                      color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
                 TextFormField(
                   controller: fNameController,
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1.0)),
+                          borderSide: const BorderSide(
+                              color: Colors.white, width: 1.0)),
                       labelText: 'First Name',
                       hintText: "Zeena"),
                 ),
@@ -62,8 +71,8 @@ class _RegisterState extends State<Register> {
                   controller: lNameController,
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
-                          borderSide:
-                              const BorderSide(color: Colors.grey, width: 1.0)),
+                          borderSide: const BorderSide(
+                              color: Colors.white, width: 1.0)),
                       labelText: 'Last Name',
                       hintText: "Youhan"),
                 ),
@@ -110,20 +119,25 @@ class _RegisterState extends State<Register> {
                     color: Colors.blue,
                   ),
                   Container(
-                    margin:
-                        const EdgeInsets.only(right: 220, top: 10, left: 10),
+                    margin: EdgeInsets.only(
+                        right: SizeConfig.right / 4,
+                        top: 10,
+                        left: SizeConfig.left / 4),
                     child: Text(
-                      "User Type:",
-                      style: TextStyle(fontSize: 25, color: Colors.blue),
+                      "User Type",
+                      style: TextStyle(
+                          fontSize: SizeConfig.screenWidth / 20,
+                          color: Colors.white),
                       textAlign: TextAlign.left,
                     ),
                   ),
                 ]),
                 DropdownButton<String>(
                     value: dropdownValue,
+                    isExpanded: true,
                     iconSize: 24,
                     elevation: 16,
-                    style: TextStyle(fontSize: 25, color: Colors.black),
+                    style: TextStyle(fontSize: 25, color: Colors.white),
                     onChanged: (String newValue) {
                       setState(() {
                         dropdownValue = newValue;
@@ -139,14 +153,21 @@ class _RegisterState extends State<Register> {
                         child: Text(value),
                       );
                     }).toList()),
-                RaisedButton(
-                  padding: const EdgeInsets.only(left: 140, right: 140),
+                Container(
+                  margin: EdgeInsets.only(
+                      top: SizeConfig.screenHeight / 8,
+                      bottom: SizeConfig.blockSizeVertical / 50),
+                ),
+                ElevatedButton(
                   child: Text(
                     "Next",
-                    style: TextStyle(fontSize: 30),
+                    style: TextStyle(fontSize: 30, color: Colors.yellow[700]),
                   ),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.deepPurple[900],
+                    padding: EdgeInsets.only(
+                        left: SizeConfig.left / 3, right: SizeConfig.right / 3),
+                  ),
                   onPressed: () async {
                     final userFName = fNameController.text;
                     final userLName = lNameController.text;
@@ -177,6 +198,10 @@ class _RegisterState extends State<Register> {
                                   userFName, userLName, email, userType)));
                     }
                   },
+                ),
+                Container(
+                  margin:
+                      EdgeInsets.only(bottom: SizeConfig.blockSizeVertical / 2),
                 ),
               ],
             )))));
