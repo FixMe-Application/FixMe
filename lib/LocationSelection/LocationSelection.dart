@@ -108,30 +108,4 @@ class _LocationSelectionState extends State<LocationSelection> {
         await DefaultAssetBundle.of(context).load("assets/currentLocation.png");
     return byteData.buffer.asUint8List();
   }
-
-  Map<MarkerId, Marker> markers =
-      <MarkerId, Marker>{}; // CLASS MEMBER, MAP OF MARKS
-
-  void _add() {
-    var markerIdVal = MyWayToGenerateId();
-    final MarkerId markerId = MarkerId(markerIdVal);
-
-    // creating a new MARKER
-    final Marker marker = Marker(
-      markerId: markerId,
-      position: LatLng(
-        center.latitude + sin(_markerIdCounter * pi / 6.0) / 20.0,
-        center.longitude + cos(_markerIdCounter * pi / 6.0) / 20.0,
-      ),
-      infoWindow: InfoWindow(title: markerIdVal, snippet: '*'),
-      onTap: () {
-        _onMarkerTapped(markerId);
-      },
-    );
-
-    setState(() {
-      // adding a new marker to map
-      markers[markerId] = marker;
-    });
-  }
 }
