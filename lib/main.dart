@@ -1,5 +1,5 @@
+import 'package:fix_me_app/Payment/User/User-Rating.dart';
 import 'package:flutter/material.dart';
-
 
 import 'getStart.dart';
 
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: GetStart(),
+      home: MechanicRating(),
     );
   }
 }
