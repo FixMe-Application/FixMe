@@ -15,17 +15,17 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MechanicRating(),
+      home: UserRating(),
     );
   }
 }
 
-class MechanicRating extends StatefulWidget {
+class UserRating extends StatefulWidget {
   @override
-  _MechanicRatingState createState() => _MechanicRatingState();
+  _UserRatingState createState() => _UserRatingState();
 }
 
-class _MechanicRatingState extends State<MechanicRating> {
+class _UserRatingState extends State<UserRating> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
