@@ -159,7 +159,7 @@ class _FuelPaymentState extends State<FuelPayment> {
                   RaisedButton(
                       child: Text(
                         "Paid",
-                        style: TextStyle(fontSize: 24),
+                        style: TextStyle(fontSize: SizeConfig.screenWidth / 20),
                       ),
                       onPressed: null)
                 ],
