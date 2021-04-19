@@ -1,3 +1,4 @@
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -13,33 +14,42 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Register(),
+      home: MechanicMain(),
     );
   }
 }
 
-class Register extends StatefulWidget {
+class MechanicMain extends StatefulWidget {
   @override
-  _RegisterState createState() => _RegisterState();
+  _MechanicMainState createState() => _MechanicMainState();
 }
 
-class _RegisterState extends State<Register> {
+class _MechanicMainState extends State<MechanicMain> {
   bool fab = true;
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
+            backgroundColor: Colors.lightBlue[900],
             title: Text(
-          "Payment",
-          style: TextStyle(fontSize: 25),
-          textAlign: TextAlign.center,
-        )),
+              "Payment",
+              style: TextStyle(
+                  fontSize: SizeConfig.screenWidth / 15,
+                  color: Colors.yellow[700]),
+              textAlign: TextAlign.center,
+            )),
         body: Container(
+          color: Colors.grey[700],
+          height: SizeConfig.screenHeight,
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Text("Choose the payment method", style: TextStyle(fontSize: 30)),
+              Text("Choose the payment method",
+                  style: TextStyle(
+                      fontSize: SizeConfig.screenWidth / 15,
+                      color: Colors.white)),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
@@ -49,12 +59,12 @@ class _RegisterState extends State<Register> {
                       icon: Icon(
                         Icons.search,
                       ),
-                      iconSize: 150.0,
+                      iconSize: SizeConfig.screenWidth / 4,
                       onPressed: null),
                   IconButton(
                       padding: EdgeInsets.all(20),
                       icon: Icon(Icons.build),
-                      iconSize: 150.0,
+                      iconSize: SizeConfig.screenWidth / 4,
                       onPressed: () {
                         showModalBottomSheet(
                             context: context,
@@ -89,7 +99,9 @@ class _RegisterState extends State<Register> {
                                       child: Text(
                                         "Confirm",
                                         style: TextStyle(
-                                            color: Colors.white, fontSize: 25),
+                                            color: Colors.white,
+                                            fontSize:
+                                                SizeConfig.screenWidth / 15),
                                       ),
                                       onPressed: null)
                                 ])));
@@ -98,12 +110,13 @@ class _RegisterState extends State<Register> {
               ),
               Text(
                 "Full Payment :                   Rs.0000.00",
-                style: TextStyle(fontSize: 25),
+                style: TextStyle(
+                    fontSize: SizeConfig.screenWidth / 20, color: Colors.white),
               ),
               RaisedButton(
                   child: Text(
                     "Paid",
-                    style: TextStyle(fontSize: 24),
+                    style: TextStyle(fontSize: SizeConfig.screenWidth / 20),
                   ),
                   onPressed: null)
             ],
