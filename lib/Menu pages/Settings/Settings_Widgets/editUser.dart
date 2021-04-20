@@ -2,18 +2,22 @@ import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/password.dart
 import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/phoneNo.dart';
 import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/profilePic.dart';
 import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/userName.dart';
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class EditUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Card(
       child: ListTile(
           title: Text('Edit my account',
-              style: TextStyle(fontWeight: FontWeight.w500)),
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: SizeConfig.screenHeight / 30)),
           leading: Icon(
             Icons.edit,
-            color: Colors.blue[500],
+            color: Colors.lightBlue[900],
           ),
           onTap: () {
             var router = new MaterialPageRoute(builder: (BuildContext context) {
@@ -36,10 +40,16 @@ class _EditUserAccountState extends State<EditUserAccount> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: new AppBar(
-          title: new Text('Edit Account'),
-          backgroundColor: Colors.blueAccent,
+          title: new Text(
+            'Edit Account',
+            style: TextStyle(
+                fontSize: SizeConfig.screenWidth / 15,
+                color: Colors.yellow[700]),
+          ),
+          backgroundColor: Colors.lightBlue[900],
         ),
         body: new Container(
+            color: Colors.grey[700],
             width: double.infinity,
             margin: EdgeInsets.all(15),
             child: new Column(children: <Widget>[
@@ -53,12 +63,17 @@ class _EditUserAccountState extends State<EditUserAccount> {
               Divider(color: Colors.transparent),
               Divider(color: Colors.transparent),
               Container(
-                  width: 300,
-                  height: 40,
+                  width: SizeConfig.screenWidth,
+                  height: SizeConfig.screenHeight / 10,
                   child: RaisedButton(
-                      child: new Text('Apply'),
-                      hoverColor: Colors.blue,
-                      color: Colors.blueAccent,
+                      child: new Text(
+                        'Apply',
+                        style: TextStyle(
+                            fontSize: SizeConfig.screenHeight / 30,
+                            color: Colors.yellow[700]),
+                      ),
+                      hoverColor: Colors.lightBlue[900],
+                      color: Colors.lightBlue[900],
                       onPressed: () {}))
             ])));
   }
