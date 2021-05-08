@@ -1,3 +1,4 @@
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:fix_me_app/widgets/header.dart';
 import 'package:flutter/material.dart';
 
@@ -11,13 +12,23 @@ class _PaymentSettingsState extends State<PaymentSettings> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      appBar: header(titleText: 'Payment'),
+      appBar: AppBar(
+          backgroundColor: Colors.lightBlue[900],
+          title: Text(
+            "Payment",
+            style: TextStyle(
+                fontSize: SizeConfig.screenWidth / 15,
+                color: Colors.yellow[700]),
+            textAlign: TextAlign.center,
+          )),
       body: Container(
+        color: Colors.grey[800],
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(top: SizeConfig.screenHeight / 40),
               child: RadioListTile(
                 groupValue: radioItem,
                 title: Row(
@@ -25,14 +36,18 @@ class _PaymentSettingsState extends State<PaymentSettings> {
                     Container(
                       child: Icon(
                         Icons.card_membership,
-                        size: 25.0,
+                        size: SizeConfig.screenHeight / 25,
+                        color: Colors.white,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(10.0),
+                      padding: EdgeInsets.all(SizeConfig.screenHeight / 30),
                       child: Container(
                         child: Text(
-                          'Cash'
+                          'Cash',
+                          style: TextStyle(
+                              fontSize: SizeConfig.screenHeight / 25,
+                              color: Colors.white),
                         ),
                       ),
                     )
@@ -47,11 +62,11 @@ class _PaymentSettingsState extends State<PaymentSettings> {
               ),
             ),
             Divider(
-              height: 10.0,
+              height: SizeConfig.screenHeight / 20,
               indent: 15.0,
               endIndent: 15.0,
               color: Colors.black87,
-              ),
+            ),
             RadioListTile(
               groupValue: radioItem,
               title: Row(
@@ -59,27 +74,32 @@ class _PaymentSettingsState extends State<PaymentSettings> {
                   Container(
                     child: Icon(
                       Icons.credit_card,
-                      size: 25.0,
+                      size: SizeConfig.screenHeight / 25,
+                      color: Colors.white,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(10.0),
+                    padding: EdgeInsets.only(
+                        top: SizeConfig.screenHeight / 150,
+                        left: SizeConfig.screenHeight / 30,
+                        right: SizeConfig.screenHeight / 15),
                     child: Container(
                       //flex: 3,
                       child: Text(
-                        'Credit/Debit Card'
+                        'Credit/Debit Card',
+                        style: TextStyle(
+                            fontSize: SizeConfig.screenHeight / 25,
+                            color: Colors.white),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 70.0),
-                    child: GestureDetector(
-                      onTap: (){},
-                      child: Icon(
-                        Icons.arrow_forward,
-                      ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: Icon(
+                      Icons.arrow_forward,
+                      color: Colors.white,
                     ),
-                  )
+                  ),
                 ],
               ),
               value: 'Item 2',
@@ -98,13 +118,12 @@ class _PaymentSettingsState extends State<PaymentSettings> {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 textColor: Colors.white,
-                color: Colors.blueAccent,
-                child: Text(
-                  'Add New Payment Method',
-                  style: TextStyle(
-                    fontSize: 20.0
-                  ),
-                ),
+                color: Colors.lightBlue[900],
+                child: Text('Add New Payment Method',
+                    style: TextStyle(
+                      fontSize: SizeConfig.screenHeight / 30,
+                      color: Colors.yellow[700],
+                    )),
               ),
             )
           ],

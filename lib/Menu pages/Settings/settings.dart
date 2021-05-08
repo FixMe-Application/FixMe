@@ -1,3 +1,4 @@
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'Settings_Widgets/deleteUser.dart';
@@ -13,17 +14,25 @@ class Settings extends StatefulWidget {
 class _SettingsState extends State<Settings> {
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         appBar: new AppBar(
-          title: new Text('Settings'),
-          backgroundColor: Colors.blueAccent,
+          title: new Text(
+            'Settings',
+            style: TextStyle(
+                fontSize: SizeConfig.screenWidth / 15,
+                color: Colors.yellow[700]),
+          ),
+          backgroundColor: Colors.lightBlue[900],
         ),
         body: new Container(
+            color: Colors.grey[800],
+            height: SizeConfig.screenHeight,
             child: new Column(children: <Widget>[
-          User(),
-          EditUser(),
-          DeleteUser(),
-          LogOut()
-        ])));
+              User(),
+              EditUser(),
+              DeleteUser(),
+              LogOut()
+            ])));
   }
 }

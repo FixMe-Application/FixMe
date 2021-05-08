@@ -1,6 +1,7 @@
 import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Register/register.dart';
-import 'package:fix_me_app/Authentication/models/registerModel.dart';
+import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 String dropdownValue = 'I have a garage';
@@ -24,23 +25,28 @@ class _RegisterGarageState extends State<RegisterGarage> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
+          backgroundColor: Colors.lightBlue[900],
           title: Text(
             "Register",
+            style: TextStyle(fontSize: 30, color: Colors.yellow[700]),
           ),
           centerTitle: true,
         ),
         body: Container(
-            color: Colors.white,
-            padding: const EdgeInsets.only(left: 20, top: 60, right: 20),
+            height: SizeConfig.screenHeight,
+            color: Colors.grey[800],
+            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
               Text(
                 "Step 2/2",
-                style: TextStyle(fontSize: 25, color: Colors.lightBlue),
+                style: TextStyle(
+                    fontSize: SizeConfig.screenWidth / 15,
+                    color: Colors.yellow[700]),
                 textAlign: TextAlign.center,
               ),
               SizedBox(
@@ -48,19 +54,23 @@ class _RegisterGarageState extends State<RegisterGarage> {
               ),
               TextFormField(
                 decoration: InputDecoration(
-                    border: const OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.grey, width: 1.0)),
-                    labelText: 'Phone Number',
-                    hintText: "0XXXXXXX"),
+                  border: const OutlineInputBorder(
+                      borderSide:
+                          const BorderSide(color: Colors.grey, width: 1.0)),
+                  labelText: 'Phone Number',
+                  hintText: "0XXXXXXX",
+                  labelStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
+                ),
               ),
               SizedBox(
                 height: 10,
               ),
               RaisedButton(
-                  child: Text("Verify", style: TextStyle(fontSize: 20)),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
+                  child: Text("Verify",
+                      style: TextStyle(fontSize: SizeConfig.screenWidth / 20)),
+                  color: Colors.lightBlue[900],
+                  textColor: Colors.yellow[700],
                   onPressed: () {}),
               SizedBox(
                 height: 10,
@@ -71,16 +81,22 @@ class _RegisterGarageState extends State<RegisterGarage> {
                       borderSide: const BorderSide(color: Colors.grey)),
                   labelText: 'Verification Code',
                   hintText: "XXXX",
+                  labelStyle: TextStyle(color: Colors.white),
+                  hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
               Container(
                 margin: EdgeInsets.all(10),
               ),
               DropdownButton<String>(
+                  dropdownColor: Colors.grey[800],
+                  isExpanded: true,
                   value: dropdownValue,
                   iconSize: 20,
                   elevation: 2,
-                  style: TextStyle(fontSize: 20, color: Colors.black),
+                  style: TextStyle(
+                      fontSize: SizeConfig.screenWidth / 20,
+                      color: Colors.white),
                   onChanged: (String newValue) {
                     setState(() {
                       dropdownValue = newValue;
@@ -100,7 +116,7 @@ class _RegisterGarageState extends State<RegisterGarage> {
                     IconButton(
                         icon: Icon(
                           Icons.search,
-                          color: Colors.blue,
+                          color: Colors.yellow[700],
                         ),
                         tooltip: "Explorer",
                         iconSize: 60.0,
@@ -129,37 +145,39 @@ class _RegisterGarageState extends State<RegisterGarage> {
                 margin: const EdgeInsets.only(left: 10, top: 40, bottom: 20),
                 child: Text(
                   "By creating an account you agree to our Terms of Service and Privacy Policy",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(
+                      fontSize: SizeConfig.screenWidth / 20,
+                      color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
-              SizedBox(
-                height: 100,
-              ),
-              RaisedButton(
-                  padding: const EdgeInsets.only(left: 155, right: 155),
-                  child: Text(
-                    "Register",
-                    style: TextStyle(fontSize: 20),
-                  ),
-                  color: Theme.of(context).primaryColor,
-                  textColor: Colors.white,
-                  onPressed: () async {
-                    try {
-                      Post newPost = new Post(
-                          uid: "5",
-                          firstName: widget.firstName,
-                          lastName: widget.lastName,
-                          phoneNumber: pNumControler.text,
-                          email: widget.email,
-                          userType: widget.userType);
-                      Post p =
-                          await createPost(regEndPoint, body: newPost.toMap());
-                      print(p.firstName + " you are superb!");
-                    } catch (e) {
-                      print('Caught error: $e');
-                    }
-                  }),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: RaisedButton(
+                    padding: const EdgeInsets.only(left: 120, right: 120),
+                    child: Text(
+                      "Submit",
+                      style: TextStyle(fontSize: SizeConfig.screenWidth / 20),
+                    ),
+                    color: Colors.lightBlue[900],
+                    textColor: Colors.yellow[700],
+                    onPressed: () async {
+                      try {
+                        Post newPost = new Post(
+                            uid: "5",
+                            firstName: widget.firstName,
+                            lastName: widget.lastName,
+                            phoneNumber: pNumControler.text,
+                            email: widget.email,
+                            userType: widget.userType);
+                        Post p = await createPost(regEndPoint,
+                            body: newPost.toMap());
+                        print(p.firstName + " you are superb!");
+                      } catch (e) {
+                        print('Caught error: $e');
+                      }
+                    }),
+              )
             ])))));
   }
 }

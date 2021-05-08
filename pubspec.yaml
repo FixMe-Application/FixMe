@@ -24,6 +24,8 @@ dependencies:
   geolocator: ^5.3.1
 
   flutter_credit_card: ^0.1.3
+  provider: ^5.0.0
+  image_picker: ^0.6.7+22
 
 dev_dependencies:
   flutter_test:
@@ -41,3 +43,4 @@ flutter:
     - assets/breakdown_btn.png
     - assets/fuelempty_btn.png
     - assets/navigate_btn.png
+    - assets/chatbot.png

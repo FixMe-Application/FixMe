@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fix_me_app/Login/login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
@@ -64,8 +65,6 @@ class AuthService {
 
 // Login with Facebook
   Future<bool> loginWithFacebook() async {
-    FirebaseUser user;
-
     try {
       var facebookLogin = new FacebookLogin();
       var result = await facebookLogin.logIn(['email']);
@@ -90,5 +89,12 @@ class AuthService {
       print(e.message);
       return false;
     }
+  }
+
+  //Signout user
+  Future<Login> signOut() async {
+    await _auth.signOut();
+
+    return new Login();
   }
 }

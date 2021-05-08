@@ -1,7 +1,9 @@
 import 'package:fix_me_app/authentication/services/authService.dart';
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../getStart.dart';
+import '../Register/register.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -18,18 +20,20 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
+      backgroundColor: Colors.grey[700],
       appBar: AppBar(
         title: Text(
-          "LOGIN HERE",
+          "SignIn",
           style: TextStyle(
-            color: Colors.blue,
+            color: Colors.yellow[700],
+            fontSize: SizeConfig.screenWidth / 20,
           ),
         ),
-        backgroundColor: Colors.blue[50],
+        backgroundColor: Colors.lightBlue[900],
         centerTitle: true,
       ),
-      backgroundColor: Colors.blue[50],
       body: new Stack(children: <Widget>[
         new ListView(
           children: <Widget>[
@@ -40,7 +44,7 @@ class _LoginState extends State<Login> {
             ClipRRect(
               borderRadius: BorderRadius.circular(10.0),
               child: new Container(
-                width: 400.0,
+                width: SizeConfig.screenWidth,
                 color: Colors.white,
                 padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
                 child: new Form(
@@ -62,18 +66,19 @@ class _LoginState extends State<Login> {
                           padding:
                               EdgeInsets.symmetric(horizontal: 94, vertical: 7),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               new Image.asset(
                                 "./assets/googlelogin.png",
-                                height: 25,
-                                width: 25,
+                                height: SizeConfig.screenHeight / 20,
+                                width: SizeConfig.screenWidth / 20,
                               ),
                               SizedBox(width: 10),
                               new Text(
                                 "Login with Google",
                                 style: new TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16.9,
+                                  fontSize: SizeConfig.screenWidth / 25,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -90,26 +95,27 @@ class _LoginState extends State<Login> {
                             bool result =
                                 await AuthService().loginWithFacebook();
                             if (!result) {
-                              print("Error login with Google");
+                              print("Error login with Facebook");
                             }
-                            print("Login Successful with Google");
+                            print("Login Successful with facebook");
                           },
                           color: Colors.blue[50].withAlpha(220),
                           padding:
                               EdgeInsets.symmetric(horizontal: 86, vertical: 7),
                           child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               new Image.asset(
                                 "./assets/fblogin.png",
-                                height: 25,
-                                width: 25,
+                                height: SizeConfig.screenHeight / 20,
+                                width: SizeConfig.screenWidth / 20,
                               ),
                               SizedBox(width: 10),
                               new Text(
                                 "Login with Facebook",
                                 style: new TextStyle(
                                   color: Colors.black,
-                                  fontSize: 16.9,
+                                  fontSize: SizeConfig.screenWidth / 25,
                                   fontWeight: FontWeight.w600,
                                 ),
                               ),
@@ -122,20 +128,20 @@ class _LoginState extends State<Login> {
                         children: <Widget>[
                           Expanded(
                               child: Divider(
-                            color: Colors.blue,
+                            color: Colors.lightBlue[900],
                           )),
                           SizedBox(width: 5),
                           new Text(
                             "OR",
                             style: new TextStyle(
-                              fontSize: 30,
-                              color: Colors.blue,
+                              fontSize: SizeConfig.screenWidth / 20,
+                              color: Colors.lightBlue[900],
                             ),
                           ),
                           SizedBox(width: 5),
                           Expanded(
                               child: Divider(
-                            color: Colors.blue,
+                            color: Colors.lightBlue[900],
                           )),
                         ],
                       ),
@@ -150,6 +156,9 @@ class _LoginState extends State<Login> {
                           },
                           decoration: new InputDecoration(
                               hintText: 'Enter your Email',
+                              hintStyle: TextStyle(
+                                fontSize: SizeConfig.screenWidth / 30,
+                              ),
                               icon: new Icon(Icons.person))),
                       SizedBox(
                         height: 10.0,
@@ -163,6 +172,9 @@ class _LoginState extends State<Login> {
                         },
                         decoration: new InputDecoration(
                           hintText: 'Enter your Password',
+                          hintStyle: TextStyle(
+                            fontSize: SizeConfig.screenWidth / 30,
+                          ),
                           icon: new Icon(Icons.lock),
                         ),
                         obscureText: true,
@@ -185,8 +197,8 @@ class _LoginState extends State<Login> {
                             child: new Text(
                               "Have you fogotton your password? ",
                               style: new TextStyle(
-                                color: Colors.blue,
-                                fontSize: 16.0,
+                                color: Colors.lightBlue[900],
+                                fontSize: SizeConfig.screenWidth / 25,
                               ),
                             ),
                           ),
@@ -196,9 +208,9 @@ class _LoginState extends State<Login> {
                                 child: new Text(
                                   "Click Here!",
                                   style: new TextStyle(
-                                      color: Colors.blue,
+                                      color: Colors.lightBlue[900],
                                       decoration: TextDecoration.underline,
-                                      fontSize: 16.0,
+                                      fontSize: SizeConfig.screenWidth / 25,
                                       fontWeight: FontWeight.w600),
                                 ),
                                 onTap: () =>
@@ -225,8 +237,8 @@ class _LoginState extends State<Login> {
                   child: new Text(
                     "Don't have an account yet? ",
                     style: new TextStyle(
-                        color: Colors.blue,
-                        fontSize: 20.0,
+                        color: Colors.white,
+                        fontSize: SizeConfig.screenWidth / 20,
                         fontWeight: FontWeight.w600),
                   ),
                 ),
@@ -240,17 +252,14 @@ class _LoginState extends State<Login> {
                         "Register Here!",
                         style: new TextStyle(
                             decoration: TextDecoration.underline,
-                            color: Colors.blue,
-                            fontSize: 20.0,
+                            color: Colors.white,
+                            fontSize: SizeConfig.screenWidth / 20,
                             fontWeight: FontWeight.w600),
                       ),
                       onTap: () => {
-                        print("Register page here")
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(
-                        //       builder: (context) => Register()),
-                        // ),
+                        print("Register page here"),
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => Register()))
                       },
                     )),
               ],
@@ -276,13 +285,13 @@ class _LoginState extends State<Login> {
                     }
                   }
                 },
-                color: Colors.blue,
+                color: Colors.lightBlue[900],
                 child: new Text(
                   "LOGIN",
                   style: new TextStyle(
-                    color: Colors.white,
-                    fontSize: 16.9,
-                    fontWeight: FontWeight.w600,
+                    color: Colors.yellow[700],
+                    fontSize: SizeConfig.screenWidth / 25,
+                    fontWeight: FontWeight.w200,
                   ),
                 ),
               ),

@@ -2,23 +2,24 @@ import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/Authentication/models/registerModel.dart';
 import 'package:flutter/material.dart';
 
-class RegisterFuel extends StatefulWidget {
+class RegisterUser extends StatefulWidget {
   final firstName;
   final lastName;
   final email;
   final userType;
 
-  RegisterFuel(this.firstName, this.lastName, this.email, this.userType);
+  RegisterUser(this.firstName, this.lastName, this.email, this.userType);
 
   @override
-  _RegisterFuelState createState() => _RegisterFuelState();
+  _RegisterUserState createState() => _RegisterUserState();
 }
 
-class _RegisterFuelState extends State<RegisterFuel> {
+class _RegisterUserState extends State<RegisterUser> {
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
 
   TextEditingController pNumControler = new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,6 +45,7 @@ class _RegisterFuelState extends State<RegisterFuel> {
                 height: 20,
               ),
               TextFormField(
+                controller: pNumControler,
                 decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide:
@@ -70,62 +72,16 @@ class _RegisterFuelState extends State<RegisterFuel> {
                   hintText: "XXXX",
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(
-                          Icons.search,
-                          color: Colors.blue,
-                        ),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Explorer")
-                  ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.add_a_photo, color: Colors.blue),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Photos"),
-                  ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.add, color: Colors.blue),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text("Photos"),
-                  ]),
-
-                  //  Icon(
-                  //  Icons.add_a_photo,
-                  //  color: Colors.blue,
-                  //  size: 60.0,
-
-                  //  ),
-                  //   Icon(
-                  //  Icons.add,
-                  //  color: Colors.blue,
-                  //  size: 60.0,
-                ],
-              ),
               Container(
-                margin: const EdgeInsets.only(left: 10, top: 60, bottom: 70),
+                margin: const EdgeInsets.only(left: 10, top: 40, bottom: 70),
                 child: Text(
                   "By creating an account you agree to our Terms of Service and Privacy Policy",
-                  style: TextStyle(fontSize: 15),
+                  style: TextStyle(fontSize: 20),
                   textAlign: TextAlign.center,
                 ),
               ),
               SizedBox(
-                height: 80,
+                height: 200,
               ),
               RaisedButton(
                   padding: const EdgeInsets.only(left: 155, right: 155),
@@ -138,17 +94,18 @@ class _RegisterFuelState extends State<RegisterFuel> {
                   onPressed: () async {
                     try {
                       Post newPost = new Post(
-                          uid: "9",
+                          uid: "5",
                           firstName: widget.firstName,
                           lastName: widget.lastName,
                           phoneNumber: pNumControler.text,
                           email: widget.email,
                           userType: widget.userType);
                       Post p =
-                          await createPost(regEndPoint, body: newPost.toMap());
+                          (await createPost(regEndPoint, body: newPost.toMap()))
+                              as Post;
                       print(p.firstName + " you are superb!");
-                    } catch (err) {
-                      print('Caught error: $err');
+                    } catch (e) {
+                      print("Caught error $e");
                     }
                   }),
             ])))));

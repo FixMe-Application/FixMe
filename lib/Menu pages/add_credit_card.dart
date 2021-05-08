@@ -1,3 +1,4 @@
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:fix_me_app/widgets/header.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_form.dart';
@@ -6,12 +7,12 @@ import 'package:flutter_credit_card/flutter_credit_card.dart';
 
 class AddCard extends StatefulWidget {
   @override
-  State < StatefulWidget > createState() {
+  State<StatefulWidget> createState() {
     return AddCardState();
   }
 }
 
-class AddCardState extends State < AddCard > {
+class AddCardState extends State<AddCard> {
   String cardNumber = '';
   String expiryDate = '';
   String cardHolderName = '';
@@ -20,33 +21,53 @@ class AddCardState extends State < AddCard > {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
-      appBar: header(titleText: 'Add a New Card'),
+      appBar: AppBar(
+        backgroundColor: Colors.lightBlue[900],
+        title: Text(
+          'Add a New Card',
+          style: TextStyle(
+              fontSize: SizeConfig.screenWidth / 15, color: Colors.yellow[700]),
+          textAlign: TextAlign.center,
+        ),
+      ),
       resizeToAvoidBottomInset: true,
-      body: SafeArea(
-        child: Column(
-          children: < Widget > [
-            CreditCardWidget(
-              cardNumber: cardNumber,
-              expiryDate: expiryDate,
-              cardHolderName: cardHolderName,
-              cvvCode: cvvCode,
-              showBackView: isCvvFocused,
-              height: 150,
-              width: MediaQuery.of(context).size.width,
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: CreditCardForm(
-                  onCreditCardModelChange: onCreditCardModelChange,
+      body: Container(
+        color: Colors.grey[800],
+        child: SafeArea(
+          child: Column(
+            children: <Widget>[
+              CreditCardWidget(
+                cardNumber: cardNumber,
+                expiryDate: expiryDate,
+                cardHolderName: cardHolderName,
+                cvvCode: cvvCode,
+                showBackView: isCvvFocused,
+                height: SizeConfig.screenHeight / 3,
+                width: SizeConfig.screenWidth,
+                cardBgColor: Colors.lightBlue[900],
+                textStyle: TextStyle(
+                    fontSize: SizeConfig.screenHeight / 35,
+                    color: Colors.white),
+              ),
+              Expanded(
+                child: SingleChildScrollView(
+                  child: CreditCardForm(
+                    cardHolderDecoration: InputDecoration(
+                        labelStyle: TextStyle(color: Colors.white),
+                        hintStyle: TextStyle(color: Colors.white)),
+                    themeColor: Colors.white,
+                    onCreditCardModelChange: onCreditCardModelChange,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: (){},
+        onPressed: () {},
         label: Text('Add'),
         icon: Icon(Icons.done),
       ),
