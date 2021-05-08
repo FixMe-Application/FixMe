@@ -107,6 +107,7 @@ class _RegisterState extends State<Register> {
                   margin: const EdgeInsets.all(10),
                 ),
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.grey)),
@@ -120,6 +121,7 @@ class _RegisterState extends State<Register> {
                   margin: const EdgeInsets.all(10),
                 ),
                 TextFormField(
+                  obscureText: true,
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.grey)),

@@ -102,37 +102,14 @@ class _RegisterFuelState extends State<RegisterFuel> {
                         ),
                         tooltip: "Explorer",
                         iconSize: 60.0,
-                        onPressed: () {}),
-                    Text(
-                      "Explorer",
-                      style: TextStyle(color: Colors.white),
-                    )
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => LocationSelection()));
+                        }),
+                    Text("Select your location in the map")
                   ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon:
-                            Icon(Icons.add_a_photo, color: Colors.yellow[700]),
-                        tooltip: "Explorer",
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text(
-                      "Photos",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ]),
-                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                    IconButton(
-                        icon: Icon(Icons.add, color: Colors.yellow[700]),
-                        tooltip: "Explorer",
-                        color: Colors.white,
-                        iconSize: 60.0,
-                        onPressed: () {}),
-                    Text(
-                      "Photos",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ]),
-
                   //  Icon(
                   //  Icons.add_a_photo,
                   //  color: Colors.blue,
