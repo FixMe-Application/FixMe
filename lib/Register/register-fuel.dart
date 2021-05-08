@@ -1,4 +1,3 @@
-import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:fix_me_app/sizeConfig.dart';
@@ -49,9 +48,6 @@ class _RegisterFuelState extends State<RegisterFuel> {
                     color: Colors.yellow[700]),
                 textAlign: TextAlign.center,
               ),
-              SizedBox(
-                height: 20,
-              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -63,18 +59,12 @@ class _RegisterFuelState extends State<RegisterFuel> {
                   hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
-              SizedBox(
-                height: 10,
-              ),
               RaisedButton(
                   child: Text("Verify",
                       style: TextStyle(fontSize: SizeConfig.screenWidth / 20)),
                   color: Colors.lightBlue[900],
                   textColor: Colors.yellow[700],
                   onPressed: () {}),
-              SizedBox(
-                height: 10,
-              ),
               TextFormField(
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
@@ -91,9 +81,6 @@ class _RegisterFuelState extends State<RegisterFuel> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  SizedBox(
-                    height: 10,
-                  ),
                   Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
                     IconButton(
                         icon: Icon(
@@ -102,14 +89,37 @@ class _RegisterFuelState extends State<RegisterFuel> {
                         ),
                         tooltip: "Explorer",
                         iconSize: 60.0,
-                        onPressed: () {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => LocationSelection()));
-                        }),
-                    Text("Select your location in the map")
+                        onPressed: () {}),
+                    Text(
+                      "Explorer",
+                      style: TextStyle(color: Colors.white),
+                    )
                   ]),
+                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                    IconButton(
+                        icon:
+                            Icon(Icons.add_a_photo, color: Colors.yellow[700]),
+                        tooltip: "Explorer",
+                        iconSize: 60.0,
+                        onPressed: () {}),
+                    Text(
+                      "Photos",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ]),
+                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                    IconButton(
+                        icon: Icon(Icons.add, color: Colors.yellow[700]),
+                        tooltip: "Explorer",
+                        color: Colors.white,
+                        iconSize: 60.0,
+                        onPressed: () {}),
+                    Text(
+                      "Photos",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ]),
+
                   //  Icon(
                   //  Icons.add_a_photo,
                   //  color: Colors.blue,
@@ -131,9 +141,6 @@ class _RegisterFuelState extends State<RegisterFuel> {
                       color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
-              ),
-              SizedBox(
-                height: 80,
               ),
               RaisedButton(
                   padding: EdgeInsets.only(
