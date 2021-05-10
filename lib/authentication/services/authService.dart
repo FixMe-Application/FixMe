@@ -96,4 +96,13 @@ class AuthService {
 
     return new Login();
   }
+
+  //Password reset
+  Future sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (error) {
+      print(error.message);
+    }
+  }
 }

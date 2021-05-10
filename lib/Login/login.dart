@@ -222,6 +222,12 @@ class _LoginState extends State<Login> {
                                   // ignore: sdk_version_ui_as_code
                                   if (emailController.text == '')
                                     {showAlertDialog(context)}
+                                  else
+                                    {
+                                      showAlertDialogReset(context),
+                                      _auth.sendPasswordResetEmail(
+                                          emailController.text)
+                                    }
                                 },
                               )),
                         ],
@@ -322,6 +328,33 @@ showAlertDialog(BuildContext context) {
     title: Text("Empty Email!"),
     content:
         Text("Please enter your email, when you need to reset your password."),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
+}
+
+showAlertDialogReset(BuildContext context) {
+  // Create button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Reset Password!"),
+    content: Text("Please find the password reset link in ********@********."),
     actions: [
       okButton,
     ],
