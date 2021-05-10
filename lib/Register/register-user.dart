@@ -1,5 +1,7 @@
 import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/authentication/models/user.dart';
+import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
@@ -7,15 +9,18 @@ class RegisterUser extends StatefulWidget {
   final firstName;
   final lastName;
   final email;
+  final password;
   final userType;
 
-  RegisterUser(this.firstName, this.lastName, this.email, this.userType);
+  RegisterUser(
+      this.firstName, this.lastName, this.email, this.password, this.userType);
 
   @override
   _RegisterUserState createState() => _RegisterUserState();
 }
 
 class _RegisterUserState extends State<RegisterUser> {
+  final AuthService _auth = AuthService();
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
 
@@ -101,8 +106,12 @@ class _RegisterUserState extends State<RegisterUser> {
                     textColor: Colors.yellow[700],
                     onPressed: () async {
                       try {
+                        User user = await _auth.registerWithEmailAndPassword(
+                            widget.email, widget.password);
+                        print(user.uid);
+
                         Post newPost = new Post(
-                            uid: "5",
+                            uid: user.uid,
                             firstName: widget.firstName,
                             lastName: widget.lastName,
                             phoneNumber: pNumControler.text,
@@ -110,6 +119,7 @@ class _RegisterUserState extends State<RegisterUser> {
                             userType: widget.userType);
                         Post p = await createPost(regEndPoint,
                             body: newPost.toMap());
+
                         print(p.firstName + " you are superb!");
                       } catch (e) {
                         print("Caught error $e");

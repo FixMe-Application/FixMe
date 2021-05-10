@@ -1,3 +1,4 @@
+import 'package:fix_me_app/HomePages/userHomePage.dart';
 import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
@@ -11,6 +12,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  TextEditingController emailController = new TextEditingController();
   final AuthService _auth = AuthService();
   final _formKey = GlobalKey<FormState>();
 
@@ -149,6 +151,7 @@ class _LoginState extends State<Login> {
                         height: 30,
                       ),
                       new TextFormField(
+                          controller: emailController,
                           validator: (val) =>
                               val.isEmpty ? 'Enter your Email' : null,
                           onChanged: (val) {
@@ -213,8 +216,13 @@ class _LoginState extends State<Login> {
                                       fontSize: SizeConfig.screenWidth / 25,
                                       fontWeight: FontWeight.w600),
                                 ),
-                                onTap: () =>
-                                    {print("Forgotten password screen!")},
+                                onTap: () => {
+                                  print("Forgotten password screen!"),
+                                  print(emailController.text),
+                                  // ignore: sdk_version_ui_as_code
+                                  if (emailController.text == '')
+                                    {showAlertDialog(context)}
+                                },
                               )),
                         ],
                       ),
@@ -279,9 +287,6 @@ class _LoginState extends State<Login> {
                     if (result == null) {
                       setState(() =>
                           error = 'Unable to signin using this credentials');
-                    } else {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => GetStart()));
                     }
                   }
                 },
@@ -301,4 +306,32 @@ class _LoginState extends State<Login> {
       ]),
     );
   }
+}
+
+showAlertDialog(BuildContext context) {
+  // Create button
+  Widget okButton = FlatButton(
+    child: Text("OK"),
+    onPressed: () {
+      Navigator.of(context).pop();
+    },
+  );
+
+  // Create AlertDialog
+  AlertDialog alert = AlertDialog(
+    title: Text("Empty Email!"),
+    content:
+        Text("Please enter your email, when you need to reset your password."),
+    actions: [
+      okButton,
+    ],
+  );
+
+  // show the dialog
+  showDialog(
+    context: context,
+    builder: (BuildContext context) {
+      return alert;
+    },
+  );
 }

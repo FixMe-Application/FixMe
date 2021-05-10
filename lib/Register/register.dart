@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:fix_me_app/Menu%20pages/Settings/Edit_User_Widgets/password.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
@@ -20,6 +21,7 @@ class _RegisterState extends State<Register> {
   TextEditingController fNameController = new TextEditingController();
   TextEditingController lNameController = new TextEditingController();
   TextEditingController emailController = new TextEditingController();
+  TextEditingController passwordController = new TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -107,6 +109,7 @@ class _RegisterState extends State<Register> {
                   margin: const EdgeInsets.all(10),
                 ),
                 TextFormField(
+                  controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
@@ -197,6 +200,7 @@ class _RegisterState extends State<Register> {
                       final userFName = fNameController.text;
                       final userLName = lNameController.text;
                       final email = emailController.text;
+                      final password = passwordController.text;
 
                       if (dropdownValue == "As a Mechanic") {
                         final userType = dropdownValue;
@@ -212,8 +216,8 @@ class _RegisterState extends State<Register> {
                         return Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterUser(
-                                    userFName, userLName, email, userType)));
+                                builder: (context) => RegisterUser(userFName,
+                                    userLName, email, password, userType)));
                       } else if (dropdownValue == "As a Fuel Supplier") {
                         final userType = dropdownValue;
                         return Navigator.push(
