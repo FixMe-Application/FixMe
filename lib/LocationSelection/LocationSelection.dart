@@ -23,29 +23,43 @@ class _LocationSelectionState extends State<LocationSelection> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: appBarWidget(),
-      body: Stack(
-        children: <Widget>[mapWidget()],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          getCurrentLocation(),
-        },
-        child: Icon(
-          Icons.my_location,
+        extendBodyBehindAppBar: true,
+        appBar: appBarWidget(),
+        body: Stack(
+          children: <Widget>[mapWidget()],
         ),
-        backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
-      ),
-    );
+        floatingActionButton: Row(children: [
+          SizedBox(
+            width: 30,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {},
+            label: const Text('Confirm Location'),
+            icon: const Icon(Icons.location_on),
+            backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              print("Getting current location...");
+              getCurrentLocation();
+            },
+            label: const Text('Current Location'),
+            icon: const Icon(Icons.location_searching_outlined),
+            backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
+          )
+        ]));
   }
 
   Widget mapWidget() {
     return GoogleMap(
       mapType: MapType.normal,
+      zoomControlsEnabled: false,
       markers: _marker,
       initialCameraPosition:
-          CameraPosition(target: LatLng(6.480763, 80.129632), zoom: 14.0),
+          CameraPosition(target: LatLng(6.9271, 79.8612), zoom: 11.0),
       onMapCreated: (GoogleMapController controller) {
         _controller = controller;
       },
@@ -54,21 +68,9 @@ class _LocationSelectionState extends State<LocationSelection> {
 
   Widget appBarWidget() {
     return AppBar(
-      backgroundColor: Colors.blue,
+      backgroundColor: Colors.blueGrey[600],
       title: Text('Select your location'),
       elevation: 0.0,
-      actions: <Widget>[
-        Container(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-          margin: EdgeInsets.all(5),
-          child: GestureDetector(
-              onTap: () => {print("Message icon clicked")},
-              child: Icon(
-                Icons.sms,
-                size: 25,
-              )),
-        )
-      ],
       iconTheme: IconThemeData(
         size: 30.0,
         color: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),

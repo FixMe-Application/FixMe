@@ -1,4 +1,5 @@
 import 'package:fix_me_app/HomePages/userHomePage.dart';
+import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Login/login.dart';
 import 'package:fix_me_app/getStart.dart';
 import 'package:flutter/material.dart';
@@ -16,12 +17,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
         value: AuthService().user,
         child: MaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'FixMe App',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          home: Wrapper(),
-        ));
+            debugShowCheckedModeBanner: false,
+            title: 'FixMe App',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            // home: Wrapper(),
+            home: LocationSelection()));
   }
 }

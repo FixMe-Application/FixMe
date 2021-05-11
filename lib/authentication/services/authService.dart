@@ -53,9 +53,11 @@ class AuthService {
           GoogleAuthProvider.getCredential(
               idToken: (await account.authentication).idToken,
               accessToken: (await account.authentication).accessToken));
-      if (result.user == null) return false;
-
-      return true;
+      if (result.user == null) {
+        return false;
+      } else {
+        return true;
+      }
     } catch (e) {
       print("Error login with google");
       return false;
