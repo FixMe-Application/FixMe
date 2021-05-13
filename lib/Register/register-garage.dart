@@ -3,6 +3,7 @@ import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 String dropdownValue = 'I have a garage';
 
@@ -22,6 +23,9 @@ class _RegisterGarageState extends State<RegisterGarage> {
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
   TextEditingController pNumControler = new TextEditingController();
+  var result;
+  var selectedLocationText = "Select your location in the map";
+  LatLng selectedLocation;
 
   @override
   Widget build(BuildContext context) {
@@ -111,13 +115,17 @@ class _RegisterGarageState extends State<RegisterGarage> {
                         ),
                         tooltip: "Explorer",
                         iconSize: 60.0,
-                        onPressed: () {
-                          Navigator.push(
+                        onPressed: () async {
+                          result = await Navigator.push(
                               context,
                               MaterialPageRoute(
                                   builder: (context) => LocationSelection()));
+                          setState(() {
+                            selectedLocation = result[0];
+                            selectedLocationText = result[1];
+                          });
                         }),
-                    Text("Select your location in the map",
+                    Text(selectedLocationText,
                         style: TextStyle(color: Colors.white))
                   ]),
 

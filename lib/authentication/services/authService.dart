@@ -7,6 +7,10 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  Future<FirebaseUser> getCurrentUser() async {
+    return await _auth.currentUser();
+  }
+
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
   }

@@ -17,12 +17,12 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
         value: AuthService().user,
         child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'FixMe App',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            // home: Wrapper(),
-            home: LocationSelection()));
+          debugShowCheckedModeBanner: false,
+          title: 'FixMe App',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: Wrapper(),
+        ));
   }
 }
