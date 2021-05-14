@@ -1,10 +1,15 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:fix_me_app/Login/login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import '../models/user.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
+
+  Future<FirebaseUser> getCurrentUser() async {
+    return await _auth.currentUser();
+  }
 
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
@@ -19,7 +24,6 @@ class AuthService {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-
       return (_userFromFirebaseUser(user));
     } catch (e) {
       print(e.toString());
@@ -28,18 +32,18 @@ class AuthService {
   }
 
 // //Register with Email and password
-//   Future registerWithEmailAndPassword(String email, String password) async {
-//     try {
-//       AuthResult result = await _auth.createUserWithEmailAndPassword(
-//           email: email, password: password);
-//       FirebaseUser user = result.user;
+  Future registerWithEmailAndPassword(String email, String password) async {
+    try {
+      AuthResult result = await _auth.createUserWithEmailAndPassword(
+          email: email, password: password);
+      FirebaseUser user = result.user;
 
-//       return (_userFromFirebaseUser(user));
-//     } catch (e) {
-//       print(e.toString());
-//       return null;
-//     }
-//   }
+      return (_userFromFirebaseUser(user));
+    } catch (e) {
+      print(e.toString());
+      return null;
+    }
+  }
 
 //Login with Google
   Future<bool> loginWithGoogle() async {
@@ -53,9 +57,11 @@ class AuthService {
           GoogleAuthProvider.getCredential(
               idToken: (await account.authentication).idToken,
               accessToken: (await account.authentication).accessToken));
-      if (result.user == null) return false;
-
-      return true;
+      if (result.user == null) {
+        return false;
+      } else {
+        return true;
+      }
     } catch (e) {
       print("Error login with google");
       return false;
@@ -64,8 +70,6 @@ class AuthService {
 
 // Login with Facebook
   Future<bool> loginWithFacebook() async {
-    FirebaseUser user;
-
     try {
       var facebookLogin = new FacebookLogin();
       var result = await facebookLogin.logIn(['email']);
@@ -89,6 +93,22 @@ class AuthService {
     } catch (e) {
       print(e.message);
       return false;
+    }
+  }
+
+  //Signout user
+  Future<Login> signOut() async {
+    await _auth.signOut();
+
+    return new Login();
+  }
+
+  //Password reset
+  Future sendPasswordResetEmail(String email) async {
+    try {
+      await _auth.sendPasswordResetEmail(email: email);
+    } catch (error) {
+      print(error.message);
     }
   }
 }

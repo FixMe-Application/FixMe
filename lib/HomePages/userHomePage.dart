@@ -1,5 +1,12 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:fix_me_app/Menu%20pages/Settings/settings.dart';
+import 'package:fix_me_app/Menu%20pages/about_us.dart';
+import 'package:fix_me_app/Menu%20pages/help.dart';
+import 'package:fix_me_app/Menu%20pages/payments_settings.dart';
+import 'package:fix_me_app/Menu%20pages/tasks.dart';
+import 'package:fix_me_app/Notifications/notifications.dart';
+import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../getStart.dart';
@@ -20,6 +27,7 @@ class _UserHomePageState extends State<UserHomePage> {
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;
+  final AuthService _auth = AuthService();
   // StreamSubscription _streamSubscription;
   Set<Marker> _marker = {};
   int _polylineCount = 1;
@@ -96,12 +104,45 @@ class _UserHomePageState extends State<UserHomePage> {
                 backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
               ),
             ),
-            CustomListTile(Icons.calendar_today, 'My Task', () => {}),
-            CustomListTile(Icons.payment, 'Payment', () => {}),
-            CustomListTile(Icons.settings, 'Settings', () => {}),
-            CustomListTile(Icons.info, 'About Us', () => {}),
-            CustomListTile(Icons.help, 'Help', () => {}),
-            CustomListTile(Icons.input, 'Logout', () => {})
+            CustomListTile(
+                Icons.calendar_today,
+                'My Task',
+                () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => TasksPage()))
+                    }),
+            CustomListTile(
+                Icons.payment,
+                'Payment',
+                () => {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PaymentSettings()))
+                    }),
+            CustomListTile(
+                Icons.settings,
+                'Settings',
+                () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Settings()))
+                    }),
+            CustomListTile(
+                Icons.info,
+                'About Us',
+                () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => AboutPage()))
+                    }),
+            CustomListTile(
+                Icons.help,
+                'Help',
+                () => {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Help()))
+                    }),
+            CustomListTile(
+                Icons.input, 'Logout', () async => {await _auth.signOut()})
           ]),
         ),
         appBar: appBarWidget(),
@@ -145,7 +186,12 @@ class _UserHomePageState extends State<UserHomePage> {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
           margin: EdgeInsets.all(5),
           child: GestureDetector(
-              onTap: () => {print("Message icon clicked")},
+              onTap: () => {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Notifications()))
+                  },
               child: Icon(
                 Icons.sms,
                 size: 25,

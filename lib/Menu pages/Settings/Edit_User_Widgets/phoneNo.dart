@@ -1,3 +1,4 @@
+import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class PhoneNo extends StatelessWidget {
@@ -5,12 +6,17 @@ class PhoneNo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Card(
       child: ListTile(
           title: Text('Phone Number',
-              style: TextStyle(fontWeight: FontWeight.w500)),
-          subtitle:
-              Text(phoneNo, style: TextStyle(fontWeight: FontWeight.w500)),
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: SizeConfig.screenHeight / 30)),
+          subtitle: Text(phoneNo,
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: SizeConfig.screenHeight / 30)),
           trailing: Icon(
             Icons.navigate_next,
             color: Colors.blue[500],
