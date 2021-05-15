@@ -1,9 +1,11 @@
 import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
 import 'package:fix_me_app/authentication/models/user.dart';
+import 'package:fix_me_app/authentication/services/apiService.dart';
 import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
+import 'package:http/src/response.dart';
 
 class RegisterUser extends StatefulWidget {
   final firstName;
@@ -23,7 +25,6 @@ class _RegisterUserState extends State<RegisterUser> {
   final AuthService _auth = AuthService();
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
-
   TextEditingController pNumControler = new TextEditingController();
 
   @override
@@ -119,8 +120,7 @@ class _RegisterUserState extends State<RegisterUser> {
                             userType: widget.userType);
                         Post p = await createPost(regEndPoint,
                             body: newPost.toMap());
-
-                        print(p.firstName + " you are superb!");
+                        print(p.firstName + ".............");
                       } catch (e) {
                         print("Caught error $e");
                       }
