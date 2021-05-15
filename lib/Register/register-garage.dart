@@ -1,9 +1,15 @@
+import 'dart:convert';
+
 import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Register/register.dart';
 import 'package:fix_me_app/authentication/models/registerModel.dart';
+import 'package:fix_me_app/authentication/models/user.dart';
+import 'package:fix_me_app/authentication/services/apiService.dart';
+import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:fix_me_app/sizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:http/src/response.dart';
 
 String dropdownValue = 'I have a garage';
 
@@ -12,14 +18,17 @@ class RegisterGarage extends StatefulWidget {
   final lastName;
   final email;
   final userType;
+  final password;
 
-  RegisterGarage(this.firstName, this.lastName, this.email, this.userType);
+  RegisterGarage(
+      this.firstName, this.lastName, this.email, this.password, this.userType);
 
   @override
   _RegisterGarageState createState() => _RegisterGarageState();
 }
 
 class _RegisterGarageState extends State<RegisterGarage> {
+  final AuthService _auth = AuthService();
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
   TextEditingController pNumControler = new TextEditingController();
@@ -128,17 +137,6 @@ class _RegisterGarageState extends State<RegisterGarage> {
                     Text(selectedLocationText,
                         style: TextStyle(color: Colors.white))
                   ]),
-
-                  //  Icon(
-                  //  Icons.add_a_photo,
-                  //  color: Colors.blue,
-                  //  size: 60.0,
-
-                  //  ),
-                  //   Icon(
-                  //  Icons.add,
-                  //  color: Colors.blue,
-                  //  size: 60.0,
                 ],
               ),
               Container(
@@ -163,8 +161,11 @@ class _RegisterGarageState extends State<RegisterGarage> {
                     textColor: Colors.yellow[700],
                     onPressed: () async {
                       try {
+                        User user = await _auth.registerWithEmailAndPassword(
+                            widget.email, widget.password);
+                        print(user.uid);
                         Post newPost = new Post(
-                            uid: "5",
+                            uid: user.uid,
                             firstName: widget.firstName,
                             lastName: widget.lastName,
                             phoneNumber: pNumControler.text,

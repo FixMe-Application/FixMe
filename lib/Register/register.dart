@@ -8,7 +8,6 @@ import 'register-fuel.dart';
 import 'register-garage.dart';
 import 'register-user.dart';
 import 'package:http/http.dart' as http;
-import 'package:image_picker/image_picker.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -208,8 +207,8 @@ class _RegisterState extends State<Register> {
                         return Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterGarage(
-                                    userFName, userLName, email, userType)));
+                                builder: (context) => RegisterGarage(userFName,
+                                    userLName, email, password, userType)));
                       } else if (dropdownValue == "As a Driver") {
                         final userType = dropdownValue;
 
@@ -220,11 +219,12 @@ class _RegisterState extends State<Register> {
                                     userLName, email, password, userType)));
                       } else if (dropdownValue == "As a Fuel Supplier") {
                         final userType = dropdownValue;
+
                         return Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterFuel(
-                                    userFName, userLName, email, userType)));
+                                builder: (context) => RegisterFuel(userFName,
+                                    userLName, email, password, userType)));
                       }
                     },
                   ),
@@ -232,15 +232,4 @@ class _RegisterState extends State<Register> {
               ],
             )))));
   }
-}
-
-Future<Post> createPost(String url, {Map body}) async {
-  return http.post(url, body: body).then((http.Response response) {
-    final int statusCode = response.statusCode;
-
-    if (statusCode < 200 || statusCode > 400 || json == null) {
-      throw new Exception("Error while fetching data");
-    }
-    return Post.fromJson(json.decode(response.body));
-  });
 }
