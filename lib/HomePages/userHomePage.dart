@@ -9,7 +9,6 @@ import 'package:fix_me_app/Notifications/notifications.dart';
 import 'package:fix_me_app/authentication/services/authService.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import '../getStart.dart';
 import 'sideNav.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_polyline/google_map_polyline.dart';
@@ -147,26 +146,54 @@ class _UserHomePageState extends State<UserHomePage> {
         ),
         appBar: appBarWidget(),
         body: Stack(
-          children: <Widget>[mapWidget(), buttonBar()],
+          children: <Widget>[mapWidget()],
         ),
-        // bottomNavigationBar: buttonBar(),
-        floatingActionButton: Padding(
-          padding: const EdgeInsets.only(bottom: 200),
-          child: FloatingActionButton(
+        floatingActionButton: Row(children: [
+          SizedBox(
+            width: 40,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              modalBottomSheetMechanics();
+            },
+            heroTag: 'floatingBtn1',
+            label: const Text('Break Down',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
+            backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          FloatingActionButton.extended(
+            onPressed: () {
+              modalBottomSheetFuel();
+            },
+            heroTag: 'floatingBtn2',
+            label: const Text('Fuel Empty',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400)),
+            backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+          FloatingActionButton(
             onPressed: () => {
               getCurrentLocation(),
             },
+            heroTag: 'floatingBtn3',
             child: Icon(
               Icons.my_location,
             ),
             backgroundColor: Color.fromARGB(255, 3, 27, 47).withOpacity(0.8),
           ),
-        ));
+        ]));
   }
 
   Widget mapWidget() {
     return GoogleMap(
       mapType: MapType.normal,
+      mapToolbarEnabled: false,
+      zoomControlsEnabled: false,
       polylines: Set<Polyline>.of(_polylines.values),
       markers: _marker,
       initialCameraPosition:
@@ -243,9 +270,7 @@ class _UserHomePageState extends State<UserHomePage> {
       //         _position = position;
       //          CameraUpdate cameraUpdate = CameraUpdate.newCameraPosition(
       //          );
-
       //       });
-
       // });
     } catch (e) {
       print('Error: ${e.toString()}');
@@ -261,85 +286,29 @@ class _UserHomePageState extends State<UserHomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 
-  Widget buttonBar() {
-    return Align(
-        alignment: Alignment.bottomCenter,
-        child: ButtonBar(
-          alignment: MainAxisAlignment.spaceEvenly,
-          children: <Widget>[
-            new Container(
-              margin: EdgeInsets.all(10),
-              height: 180,
-              width: 170,
-              child: RaisedButton(
-                onPressed: () {
-                  _modalBottomSheetMechanics();
-                },
-                child: Column(
-                  children: <Widget>[
-                    new Container(
-                      margin: EdgeInsets.all(10),
-                      height: 130,
-                      width: 170,
-                      child: new Image.asset("assets/breakdown_btn.png"),
-                      color: Color.fromARGB(255, 3, 27, 47),
-                    ),
-                    new Text(
-                      'Break Down',
-                      style: TextStyle(fontSize: 20),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-            new Container(
-              margin: EdgeInsets.all(10),
-              height: 180,
-              width: 170,
-              child: RaisedButton(
-                onPressed: () {
-                  _modalBottomSheetFuel();
-                },
-                child: Column(
-                  children: <Widget>[
-                    new Container(
-                      margin: EdgeInsets.all(10),
-                      height: 130,
-                      width: 170,
-                      child: new Image.asset("assets/fuelempty_btn.png"),
-                      color: Colors.grey,
-                    ),
-                    new Text('Fuel Empty', style: TextStyle(fontSize: 20)),
-                  ],
-                ),
-              ),
-            )
-          ],
-        ));
-  }
-
-  _modalBottomSheetFuel() {
+  modalBottomSheetFuel() {
     showModalBottomSheet(
         context: context,
         builder: (context) => Container(
             height: 500,
             child: Column(children: <Widget>[
               SizedBox(
-                height: 20,
+                height: 15,
               ),
-              Text("Empty you Fuel-Tank?",
+              Text("Empty your Fuel?",
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
                   )),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               RaisedButton(
                   child: Text(
-                    "Get Directions",
+                    "Fuel Service to your place",
                     style: TextStyle(
-                      fontSize: 25,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
                       color: Colors.white,
                     ),
                   ),
@@ -348,28 +317,29 @@ class _UserHomePageState extends State<UserHomePage> {
             ])));
   }
 
-  _modalBottomSheetMechanics() {
+  modalBottomSheetMechanics() {
     showModalBottomSheet(
         context: context,
         builder: (context) => Container(
             height: 500,
             child: Column(children: <Widget>[
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               Text("Broke your vehical?",
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.w700,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w500,
                   )),
               SizedBox(
-                height: 20,
+                height: 15,
               ),
               RaisedButton(
                   child: Text(
-                    "Get Directions",
+                    "Mechanical service to your place",
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w500,
                       color: Colors.white,
                     ),
                   ),

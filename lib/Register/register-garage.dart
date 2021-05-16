@@ -171,9 +171,10 @@ class _RegisterGarageState extends State<RegisterGarage> {
                             phoneNumber: pNumControler.text,
                             email: widget.email,
                             userType: widget.userType);
-                        Post p = await createPost(regEndPoint,
+                        String p = await createPost(regEndPoint,
                             body: newPost.toMap());
-                        print(p.firstName + " you are superb!");
+                        print(p + " you are superb!");
+                        Navigator.pop(context, null);
                       } catch (e) {
                         print('Caught error: $e');
                       }

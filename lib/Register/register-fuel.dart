@@ -139,9 +139,10 @@ class _RegisterFuelState extends State<RegisterFuel> {
                           phoneNumber: pNumControler.text,
                           email: widget.email,
                           userType: widget.userType);
-                      Post p =
+                      String p =
                           await createPost(regEndPoint, body: newPost.toMap());
-                      print(p.firstName + " you are superb!");
+                      print(p + " you are superb!");
+                      Navigator.pop(context, null);
                     } catch (err) {
                       print('Caught error: $err');
                     }

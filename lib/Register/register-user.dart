@@ -118,9 +118,10 @@ class _RegisterUserState extends State<RegisterUser> {
                             phoneNumber: pNumControler.text,
                             email: widget.email,
                             userType: widget.userType);
-                        Post p = await createPost(regEndPoint,
+                        String p = await createPost(regEndPoint,
                             body: newPost.toMap());
-                        print(p.firstName + ".............");
+                        Navigator.pop(context, null);
+                        print(p + "......heollooooooo.......");
                       } catch (e) {
                         print("Caught error $e");
                       }

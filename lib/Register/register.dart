@@ -204,27 +204,36 @@ class _RegisterState extends State<Register> {
                       if (dropdownValue == "As a Mechanic") {
                         final userType = dropdownValue;
 
-                        return Navigator.push(
+                        var result = await Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => RegisterGarage(userFName,
                                     userLName, email, password, userType)));
+                        if (result == null) {
+                          return Navigator.pop(context);
+                        }
                       } else if (dropdownValue == "As a Driver") {
                         final userType = dropdownValue;
 
-                        return Navigator.push(
+                        var result = await Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => RegisterUser(userFName,
                                     userLName, email, password, userType)));
+                        if (result == null) {
+                          return Navigator.pop(context);
+                        }
                       } else if (dropdownValue == "As a Fuel Supplier") {
                         final userType = dropdownValue;
 
-                        return Navigator.push(
+                        var result = await Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => RegisterFuel(userFName,
                                     userLName, email, password, userType)));
+                        if (result == null) {
+                          return Navigator.pop(context);
+                        }
                       }
                     },
                   ),
