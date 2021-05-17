@@ -1,9 +1,9 @@
-import 'package:fix_me_app/HomePages/mechanicHomePage2.dart';
-import 'package:fix_me_app/HomePages/userHomePage.dart';
-import 'package:fix_me_app/Login/login.dart';
+import 'package:fix_me_app/CommonScreens/Login/login.dart';
+import 'package:fix_me_app/Driver/HomePage/userHomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'authentication/models/user.dart';
+
+import 'CommonScreens/Settings/Settings_Widgets/user.dart';
 
 class Wrapper extends StatelessWidget {
   @override

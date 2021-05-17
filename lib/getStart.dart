@@ -1,4 +1,4 @@
-import 'package:fix_me_app/sizeConfig.dart';
+import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
 class GetStart extends StatelessWidget {
