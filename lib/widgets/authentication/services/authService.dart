@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:fix_me_app/CommonScreens/Login/login.dart';
+import 'package:fix_me_app/Widgets/Authentication/Login/Login.dart';
+import 'package:fix_me_app/Widgets/Models/User.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import '../models/user.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 
 class AuthService {

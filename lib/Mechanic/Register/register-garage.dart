@@ -1,9 +1,9 @@
 import 'package:fix_me_app/Driver/LocationSelection/LocationSelection.dart';
-import 'package:fix_me_app/widgets/authentication/models/registerModel.dart';
-import 'package:fix_me_app/widgets/authentication/models/user.dart';
-import 'package:fix_me_app/widgets/authentication/services/apiService.dart';
-import 'package:fix_me_app/widgets/authentication/services/authService.dart';
-import 'package:fix_me_app/widgets/sizeConfig.dart';
+import 'package:fix_me_app/Widgets/Models/registerModel.dart';
+import 'package:fix_me_app/Widgets/Models/User.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/ApiService.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
+import 'package:fix_me_app/Widgets/SizeConfig.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 

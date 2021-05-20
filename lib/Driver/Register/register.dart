@@ -1,9 +1,9 @@
-import 'package:fix_me_app/FuelOwner/Register/register-fuel.dart';
-import 'package:fix_me_app/Mechanic/Register/register-garage.dart';
+import 'package:fix_me_app/FuelOwner/Register/Register-Fuel.dart';
+import 'package:fix_me_app/Mechanic/Register/Register-Garage.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'register-user.dart';
+import 'Register-User.dart';
 
 class Register extends StatefulWidget {
   @override

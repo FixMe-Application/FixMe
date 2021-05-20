@@ -5,21 +5,22 @@ import 'package:fix_me_app/CommonScreens/Notifications/notifications.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
-import 'package:fix_me_app/Driver/Payments/payments_settings.dart';
+import 'package:fix_me_app/Driver/Payments/Payments-Settings.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sideNav.dart';
 import 'package:flutter/material.dart';
 
-class UserHomePagefirst extends StatefulWidget {
-  UserHomePagefirst({Key key, this.title}) : super(key: key);
+class DriverHomePageSecondary extends StatefulWidget {
+  DriverHomePageSecondary({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _UserHomePagefirstState createState() => _UserHomePagefirstState();
+  _DriverHomePageSecondaryState createState() =>
+      _DriverHomePageSecondaryState();
 }
 
-class _UserHomePagefirstState extends State<UserHomePagefirst> {
+class _DriverHomePageSecondaryState extends State<DriverHomePageSecondary> {
   final AuthService _auth = AuthService();
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:fix_me_app/CommonScreens/Notifications/notifications.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
-import 'package:fix_me_app/Driver/Payments/payments_settings.dart';
+import 'package:fix_me_app/Driver/Payments/Payments-Settings.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sideNav.dart';
 import 'package:flutter/material.dart';
@@ -13,16 +13,16 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_map_polyline/google_map_polyline.dart';
 
-class UserHomePage extends StatefulWidget {
-  UserHomePage({Key key, this.title}) : super(key: key);
+class DriverHomePagePrimary extends StatefulWidget {
+  DriverHomePagePrimary({Key key, this.title}) : super(key: key);
 
   final String title;
 
   @override
-  _UserHomePageState createState() => _UserHomePageState();
+  _DriverHomePagePrimaryState createState() => _DriverHomePagePrimaryState();
 }
 
-class _UserHomePageState extends State<UserHomePage> {
+class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;

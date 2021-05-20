@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'Models/chatMessageModel.dart';
+import 'Models/ChatMessageModel.dart';
 
 class ChatBot extends StatefulWidget {
   @override
@@ -12,7 +12,7 @@ class _ChatBotState extends State<ChatBot> {
   List<ChatMessage> messages = [
     ChatMessage(
         messageContent:
-        "Hello, I am FixMe ChatBot. \nHow can I help you? Please choose one topic from below",
+            "Hello, I am FixMe ChatBot. \nHow can I help you? Please choose one topic from below",
         messageType: "receiver"),
     ChatMessage(messageContent: "1. Warning Lights", messageType: "receiver"),
     ChatMessage(
@@ -22,7 +22,7 @@ class _ChatBotState extends State<ChatBot> {
     ChatMessage(messageContent: "1", messageType: "sender"),
     ChatMessage(
         messageContent:
-        "A warning or check engine light is the most common issue for US car, truck and SUV owners. These lights illuminate when the vehicle’s ECU (engine control unit) detects an error code triggered by a sensor. Since there are more than 200 possible warning code, having a professional mechanic complete a warning light inspection is the best way to determine the source and make the right repairs.",
+            "A warning or check engine light is the most common issue for US car, truck and SUV owners. These lights illuminate when the vehicle’s ECU (engine control unit) detects an error code triggered by a sensor. Since there are more than 200 possible warning code, having a professional mechanic complete a warning light inspection is the best way to determine the source and make the right repairs.",
         messageType: "receiver"),
   ];
 

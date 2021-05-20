@@ -1,6 +1,6 @@
 import 'package:fix_me_app/Driver/LocationSelection/LocationSelection.dart';
-import 'package:fix_me_app/widgets/authentication/models/registerModel.dart';
-import 'package:fix_me_app/widgets/authentication/models/user.dart';
+import 'package:fix_me_app/widgets/Models/RegisterModel.dart';
+import 'package:fix_me_app/widgets/Models/User.dart';
 import 'package:fix_me_app/widgets/authentication/services/apiService.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';

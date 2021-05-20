@@ -1,9 +1,6 @@
-import 'package:fix_me_app/CommonScreens/Login/login.dart';
-import 'package:fix_me_app/Driver/HomePage/UserHomePage1.dart';
-
 import 'Wrapper.dart';
-import 'package:fix_me_app/widgets/authentication/models/user.dart';
-import 'package:fix_me_app/widgets/authentication/services/authService.dart';
+import 'package:fix_me_app/Widgets/Models/User.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: UserHomePagefirst(),
+          home: Wrapper(),
         ));
   }
 }

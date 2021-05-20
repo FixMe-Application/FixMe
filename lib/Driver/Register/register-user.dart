@@ -1,5 +1,5 @@
-import 'package:fix_me_app/widgets/authentication/models/registerModel.dart';
-import 'package:fix_me_app/widgets/authentication/models/user.dart';
+import 'package:fix_me_app/widgets/models/registerModel.dart';
+import 'package:fix_me_app/widgets/models/user.dart';
 import 'package:fix_me_app/widgets/authentication/services/apiService.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
