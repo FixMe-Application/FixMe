@@ -1,9 +1,9 @@
+import 'package:fix_me_app/Driver/Register/Register-Driver.dart';
 import 'package:fix_me_app/FuelOwner/Register/Register-Fuel.dart';
 import 'package:fix_me_app/Mechanic/Register/Register-Garage.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Register-User.dart';
 
 class Register extends StatefulWidget {
   @override
@@ -214,7 +214,7 @@ class _RegisterState extends State<Register> {
                         var result = await Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterUser(userFName,
+                                builder: (context) => RegisterDriver(userFName,
                                     userLName, email, password, userType)));
                         if (result == null) {
                           return Navigator.pop(context);

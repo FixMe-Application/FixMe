@@ -1,4 +1,4 @@
-import 'package:fix_me_app/Driver/Register/register.dart';
+import 'package:fix_me_app/Widgets/Authentication/Register/Register.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/cupertino.dart';

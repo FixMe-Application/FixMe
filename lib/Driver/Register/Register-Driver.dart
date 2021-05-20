@@ -5,21 +5,21 @@ import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
-class RegisterUser extends StatefulWidget {
+class RegisterDriver extends StatefulWidget {
   final firstName;
   final lastName;
   final email;
   final password;
   final userType;
 
-  RegisterUser(
+  RegisterDriver(
       this.firstName, this.lastName, this.email, this.password, this.userType);
 
   @override
-  _RegisterUserState createState() => _RegisterUserState();
+  _RegisterDriverState createState() => _RegisterDriverState();
 }
 
-class _RegisterUserState extends State<RegisterUser> {
+class _RegisterDriverState extends State<RegisterDriver> {
   final AuthService _auth = AuthService();
   static final regEndPoint =
       'https://us-central1-fixme-app.cloudfunctions.net/api/users';
