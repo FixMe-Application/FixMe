@@ -1,3 +1,4 @@
+import 'package:fix_me_app/ChatBot/chatbot.dart';
 import 'package:fix_me_app/HomePages/userHomePage.dart';
 import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
 import 'package:fix_me_app/Login/login.dart';
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: Wrapper(),
+          // home: Wrapper(),
+          home: ChatBot(),
         ));
   }
 }

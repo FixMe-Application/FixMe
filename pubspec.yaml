@@ -7,7 +7,7 @@ environment:
   sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
-  flutter_dialogflow: ^0.1.0
+  flutter_dialogflow: ^0.1.3
   flutter_rating_bar: ^3.0.1+1
   flutter:
     sdk: flutter
@@ -47,3 +47,4 @@ flutter:
     - assets/navigate_btn.png
     - assets/chatbot.png
     - assets/car.png
+    - assets/fixbot-vdj9-6dd3b6aa7052.json

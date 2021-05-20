@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'Models/chatMessageModel.dart';
+import 'package:flutter_dialogflow/dialogflow_v2.dart';
 
 class ChatBot extends StatefulWidget {
   @override
@@ -9,22 +11,21 @@ class ChatBot extends StatefulWidget {
 }
 
 class _ChatBotState extends State<ChatBot> {
-  List<ChatMessage> messages = [
-    ChatMessage(
-        messageContent:
-        "Hello, I am FixMe ChatBot. \nHow can I help you? Please choose one topic from below",
-        messageType: "receiver"),
-    ChatMessage(messageContent: "1. Warning Lights", messageType: "receiver"),
-    ChatMessage(
-        messageContent: "2. A Sputtering Engine", messageType: "receiver"),
-    ChatMessage(
-        messageContent: "3. Poor Fuel Economy", messageType: "receiver"),
-    ChatMessage(messageContent: "1", messageType: "sender"),
-    ChatMessage(
-        messageContent:
-        "A warning or check engine light is the most common issue for US car, truck and SUV owners. These lights illuminate when the vehicle’s ECU (engine control unit) detects an error code triggered by a sensor. Since there are more than 200 possible warning code, having a professional mechanic complete a warning light inspection is the best way to determine the source and make the right repairs.",
-        messageType: "receiver"),
-  ];
+
+  void response(query) async {
+    AuthGoogle authGoogle = await AuthGoogle(
+        fileJson: "assets/fixbot-vdj9-6dd3b6aa7052.json")
+        .build();
+    Dialogflow dialogflow =
+        Dialogflow(authGoogle: authGoogle,language: Language.english);
+    AIResponse aiResponse = await dialogflow.detectIntent(query);
+    setState(() {
+      messages.insert(0,ChatMessage(messageContent: aiResponse.getListMessage()[0]["text"]["text"][0], messageType: "receiver"));
+    });
+  }
+
+  final messageInsert = TextEditingController();
+  List<ChatMessage> messages = [];
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +80,7 @@ class _ChatBotState extends State<ChatBot> {
       body: Stack(
         children: <Widget>[
           ListView.builder(
+            reverse: true,
             itemCount: messages.length,
             shrinkWrap: true,
             padding: EdgeInsets.only(top: 10, bottom: 10),
@@ -138,6 +140,7 @@ class _ChatBotState extends State<ChatBot> {
                   ),
                   Expanded(
                     child: TextField(
+                      controller: messageInsert,
                       decoration: InputDecoration(
                           hintText: "Write message...",
                           hintStyle: TextStyle(color: Colors.black54),
@@ -148,7 +151,17 @@ class _ChatBotState extends State<ChatBot> {
                     width: 15,
                   ),
                   FloatingActionButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      if(messageInsert.text.isEmpty){
+                        print("empty message");
+                      } else {
+                        setState(() {
+                          messages.insert(0,ChatMessage(messageContent: messageInsert.text, messageType: "sender"));
+                        });
+                        response(messageInsert.text);
+                        messageInsert.clear();
+                      }
+                    },
                     child: Icon(
                       Icons.send,
                       color: Colors.white,
