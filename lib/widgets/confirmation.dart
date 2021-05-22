@@ -4,8 +4,10 @@ class ConfirmationBottomSheet extends StatelessWidget {
   final String title;
   final String description;
   final String buttonOneText;
+  final String buttonTwoText;
 
-  ConfirmationBottomSheet({this.title, this.description, this.buttonOneText});
+  ConfirmationBottomSheet(
+      {this.title, this.description, this.buttonOneText, this.buttonTwoText});
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +54,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
             ),
             FlatButton(
               child: Text(
-                'Option 02',
+                buttonTwoText,
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.blue,
