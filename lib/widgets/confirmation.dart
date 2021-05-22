@@ -43,7 +43,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              padding: const EdgeInsets.only(top: 15.0, bottom: 30.0),
               child: Text(
                 description,
                 textAlign: TextAlign.left,
