@@ -5,9 +5,14 @@ class ConfirmationBottomSheet extends StatelessWidget {
   final String description;
   final String buttonOneText;
   final String buttonTwoText;
+  final VoidCallback buttonOneOnPressed;
 
   ConfirmationBottomSheet(
-      {this.title, this.description, this.buttonOneText, this.buttonTwoText});
+      {this.title,
+      this.description,
+      this.buttonOneText,
+      this.buttonTwoText,
+      this.buttonOneOnPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +54,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.blue,
-              onPressed: () {
-                //Add necessary function
-              },
+              onPressed: buttonOneOnPressed,
             ),
             // ignore: deprecated_member_use
             FlatButton(
