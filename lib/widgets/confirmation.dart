@@ -66,14 +66,12 @@ class ConfirmationBottomSheet extends StatelessWidget {
                     primary: Colors.white,
                     backgroundColor: Colors.blue,
                     onSurface: Colors.grey,
-                    minimumSize: Size(150, 50),
+                    minimumSize: Size(180, 50),
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
                   ),
-                  onPressed: () {
-                    //Add necessary function
-                  },
+                  onPressed: buttonOneOnPressed,
                 ),
                 TextButton(
                   child: Text(
@@ -84,9 +82,9 @@ class ConfirmationBottomSheet extends StatelessWidget {
                     primary: Colors.white,
                     backgroundColor: Colors.blue,
                     onSurface: Colors.grey,
-                    minimumSize: Size(150, 50),
+                    minimumSize: Size(180, 50),
                     shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                      borderRadius: BorderRadius.all(Radius.circular(20.0)),
                     ),
                   ),
                   onPressed: () {
