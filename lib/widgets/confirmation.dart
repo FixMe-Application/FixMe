@@ -42,6 +42,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 color: Colors.black,
               ),
             ),
+            // ignore: deprecated_member_use
             FlatButton(
               child: Text(
                 buttonOneText,
@@ -52,6 +53,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 //Add necessary function
               },
             ),
+            // ignore: deprecated_member_use
             FlatButton(
               child: Text(
                 buttonTwoText,
