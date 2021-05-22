@@ -54,36 +54,45 @@ class ConfirmationBottomSheet extends StatelessWidget {
               ),
             ),
             // ignore: deprecated_member_use
-            Padding(
-              padding: const EdgeInsets.only(top: 15.0),
-              // ignore: deprecated_member_use
-              child: TextButton(
-                child: Text(
-                  buttonOneText,
-                  style: TextStyle(color: Colors.white),
+            Row(
+              children: <Widget>[
+                TextButton(
+                  child: Text(
+                    buttonOneText,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue,
+                    onSurface: Colors.grey,
+                    minimumSize: Size(150, 50),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                  ),
+                  onPressed: () {
+                    //Add necessary function
+                  },
                 ),
-                style: TextButton.styleFrom(
-                  primary: Colors.white,
-                  backgroundColor: Colors.blue,
-                  onSurface: Colors.grey,
+                TextButton(
+                  child: Text(
+                    buttonTwoText,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  style: TextButton.styleFrom(
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue,
+                    onSurface: Colors.grey,
+                    minimumSize: Size(150, 50),
+                    shape: const RoundedRectangleBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: buttonOneOnPressed,
-              ),
-            ),
-            // ignore: deprecated_member_use
-            TextButton(
-              child: Text(
-                buttonTwoText,
-                style: TextStyle(color: Colors.white),
-              ),
-              style: TextButton.styleFrom(
-                primary: Colors.white,
-                backgroundColor: Colors.blue,
-                onSurface: Colors.grey,
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
+              ],
             ),
           ],
         ),
