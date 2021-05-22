@@ -42,12 +42,15 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              description,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                fontSize: 20.0,
-                color: Colors.black,
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              child: Text(
+                description,
+                textAlign: TextAlign.left,
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.black,
+                ),
               ),
             ),
             // ignore: deprecated_member_use
