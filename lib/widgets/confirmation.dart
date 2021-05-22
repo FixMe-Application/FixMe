@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 class ConfirmationBottomSheet extends StatelessWidget {
   final String title;
   final String description;
+  final String buttonOneText;
 
-  ConfirmationBottomSheet({this.title, this.description});
+  ConfirmationBottomSheet({this.title, this.description, this.buttonOneText});
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
             ),
             FlatButton(
               child: Text(
-                'Option 01',
+                buttonOneText,
                 style: TextStyle(color: Colors.white),
               ),
               color: Colors.blue,
