@@ -57,22 +57,30 @@ class ConfirmationBottomSheet extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 15.0),
               // ignore: deprecated_member_use
-              child: FlatButton(
+              child: TextButton(
                 child: Text(
                   buttonOneText,
                   style: TextStyle(color: Colors.white),
                 ),
-                color: Colors.blue,
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Colors.blue,
+                  onSurface: Colors.grey,
+                ),
                 onPressed: buttonOneOnPressed,
               ),
             ),
             // ignore: deprecated_member_use
-            FlatButton(
+            TextButton(
               child: Text(
                 buttonTwoText,
                 style: TextStyle(color: Colors.white),
               ),
-              color: Colors.blue,
+              style: TextButton.styleFrom(
+                primary: Colors.white,
+                backgroundColor: Colors.blue,
+                onSurface: Colors.grey,
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },
