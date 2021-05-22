@@ -55,6 +55,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
             ),
             // ignore: deprecated_member_use
             Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 TextButton(
                   child: Text(
