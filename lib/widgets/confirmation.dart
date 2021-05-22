@@ -60,7 +60,11 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 TextButton(
                   child: Text(
                     buttonOneText,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   style: TextButton.styleFrom(
                     primary: Colors.white,
@@ -76,7 +80,11 @@ class ConfirmationBottomSheet extends StatelessWidget {
                 TextButton(
                   child: Text(
                     buttonTwoText,
-                    style: TextStyle(color: Colors.white),
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                   style: TextButton.styleFrom(
                     primary: Colors.white,
