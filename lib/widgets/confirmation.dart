@@ -31,7 +31,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 15.0),
+              padding: const EdgeInsets.symmetric(vertical: 20.0),
               child: Text(
                 title,
                 textAlign: TextAlign.left,
@@ -54,13 +54,17 @@ class ConfirmationBottomSheet extends StatelessWidget {
               ),
             ),
             // ignore: deprecated_member_use
-            FlatButton(
-              child: Text(
-                buttonOneText,
-                style: TextStyle(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.only(top: 15.0),
+              // ignore: deprecated_member_use
+              child: FlatButton(
+                child: Text(
+                  buttonOneText,
+                  style: TextStyle(color: Colors.white),
+                ),
+                color: Colors.blue,
+                onPressed: buttonOneOnPressed,
               ),
-              color: Colors.blue,
-              onPressed: buttonOneOnPressed,
             ),
             // ignore: deprecated_member_use
             FlatButton(
