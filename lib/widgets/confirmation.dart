@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ConfirmationBottomSheet extends StatelessWidget {
+  final String title;
+  final String description;
+
+  ConfirmationBottomSheet({this.title, this.description});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +23,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Text(
-              'Title',
+              title,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 30.0,
@@ -27,7 +32,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
               ),
             ),
             Text(
-              'Description',
+              description,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontSize: 20.0,
@@ -41,7 +46,7 @@ class ConfirmationBottomSheet extends StatelessWidget {
               ),
               color: Colors.blue,
               onPressed: () {
-                Navigator.pop(context);
+                //Add necessary function
               },
             ),
             FlatButton(
