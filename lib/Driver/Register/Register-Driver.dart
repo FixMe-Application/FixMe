@@ -1,7 +1,7 @@
-import 'package:fix_me_app/widgets/models/registerModel.dart';
-import 'package:fix_me_app/widgets/models/user.dart';
-import 'package:fix_me_app/widgets/authentication/services/apiService.dart';
-import 'package:fix_me_app/widgets/authentication/services/authService.dart';
+import 'package:fix_me_app/Widgets/Models/RegisterModel.dart';
+import 'package:fix_me_app/Widgets/Models/User.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/ApiService.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:fix_me_app/widgets/sizeConfig.dart';
 import 'package:flutter/material.dart';
 
@@ -107,7 +107,12 @@ class _RegisterDriverState extends State<RegisterDriver> {
                       try {
                         User user = await _auth.registerWithEmailAndPassword(
                             widget.email, widget.password);
+
                         print(user.uid);
+
+                        bool result = await syncRealtime(user.uid, "drivers",
+                            widget.firstName, pNumControler.text, widget.email);
+                        print(result);
 
                         Post newPost = new Post(
                             uid: user.uid,
@@ -118,8 +123,8 @@ class _RegisterDriverState extends State<RegisterDriver> {
                             userType: widget.userType);
                         String p = await createPost(regEndPoint,
                             body: newPost.toMap());
-                        Navigator.pop(context, null);
                         print(p + "......heollooooooo.......");
+                        Navigator.pop(context, null);
                       } catch (e) {
                         print("Caught error $e");
                       }

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
-import 'package:fix_me_app/widgets/sideNav.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
+import 'package:fix_me_app/widgets/Navigation/SideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:geolocator/geolocator.dart';
@@ -16,6 +17,7 @@ class MechanicHomePage2 extends StatefulWidget {
 }
 
 class _MechanicHomePage2State extends State<MechanicHomePage2> {
+  final AuthService _auth = AuthService();
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;
@@ -91,16 +93,17 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
             ),
             accountName: new Text('Raja'),
             accountEmail: new Text('testemail@test.com'),
-            currentAccountPicture: new CircleAvatar(
-              backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
-            ),
+            // currentAccountPicture: new CircleAvatar(
+            //   backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
+            // ),
           ),
           CustomListTile(Icons.calendar_today, 'My Task', () => {}),
           CustomListTile(Icons.payment, 'Payment', () => {}),
           CustomListTile(Icons.settings, 'Settings', () => {}),
           CustomListTile(Icons.info, 'About Us', () => {}),
           CustomListTile(Icons.help, 'Help', () => {}),
-          CustomListTile(Icons.input, 'Logout', () => {})
+          CustomListTile(
+              Icons.input, 'Logout', () async => {await _auth.signOut()})
         ]),
       ),
       appBar: appBarWidget(),

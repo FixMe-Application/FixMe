@@ -127,12 +127,12 @@ class _RegisterFuelState extends State<RegisterFuel> {
                   textColor: Colors.yellow[700],
                   onPressed: () async {
                     try {
-                      User user = await _auth.registerWithEmailAndPassword(
-                          widget.email, widget.password);
-                      print(user.uid);
+                      // User user = await _auth.registerWithEmailAndPassword(
+                      //     widget.email, widget.password);
+                      // print(user.uid);
 
                       Post newPost = new Post(
-                          uid: user.uid,
+                          // uid: user.uid,
                           firstName: widget.firstName,
                           lastName: widget.lastName,
                           phoneNumber: pNumControler.text,

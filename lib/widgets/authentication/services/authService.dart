@@ -7,10 +7,12 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+//Get Current User
   Future<FirebaseUser> getCurrentUser() async {
     return await _auth.currentUser();
   }
 
+//Get User from the FirebaseUser
   User _userFromFirebaseUser(FirebaseUser user) {
     return user != null ? User(uid: user.uid) : null;
   }
@@ -24,7 +26,7 @@ class AuthService {
       AuthResult result = await _auth.signInWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-      return (_userFromFirebaseUser(user));
+      return user;
     } catch (e) {
       print(e.toString());
       return null;
@@ -37,7 +39,6 @@ class AuthService {
       AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
       FirebaseUser user = result.user;
-
       return (_userFromFirebaseUser(user));
     } catch (e) {
       print(e.toString());
@@ -99,7 +100,6 @@ class AuthService {
   //Signout user
   Future<Login> signOut() async {
     await _auth.signOut();
-
     return new Login();
   }
 
