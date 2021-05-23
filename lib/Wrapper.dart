@@ -1,9 +1,8 @@
-import 'package:fix_me_app/HomePages/mechanicHomePage2.dart';
-import 'package:fix_me_app/HomePages/userHomePage.dart';
-import 'package:fix_me_app/Login/login.dart';
+import 'package:fix_me_app/Driver/HomePage/DriverHomePagePrimary.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'authentication/models/user.dart';
+import 'Widgets/Authentication/Login/Login.dart';
+import 'Widgets/Models/User.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -14,7 +13,7 @@ class Wrapper extends StatelessWidget {
     if (user == null) {
       return Login();
     } else {
-      return UserHomePage();
+      return DriverHomePagePrimary();
     }
   }
 }

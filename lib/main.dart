@@ -1,14 +1,8 @@
-import 'package:fix_me_app/ChatBot/chatbot.dart';
-import 'package:fix_me_app/HomePages/userHomePage.dart';
-import 'package:fix_me_app/LocationSelection/LocationSelection.dart';
-import 'package:fix_me_app/Login/login.dart';
-import 'package:fix_me_app/getStart.dart';
+import 'Wrapper.dart';
+import 'package:fix_me_app/Widgets/Models/User.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Wrapper.dart';
-import 'authentication/models/user.dart';
-import 'authentication/services/authService.dart';
-import './Register/register.dart';
 
 void main() => runApp(MyApp());
 
