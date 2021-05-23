@@ -30,49 +30,100 @@ class _RegisterDriverState extends State<RegisterDriver> {
     SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlue[900],
+          backgroundColor: Color(0xff2a2e43),
           title: Text(
             "Register",
             style: TextStyle(
-                fontSize: SizeConfig.screenWidth / 20,
-                color: Colors.yellow[700]),
+              fontSize: SizeConfig.screenWidth / 20,
+              color: Colors.white,
+            ),
           ),
           centerTitle: true,
         ),
         body: Container(
             height: SizeConfig.screenHeight,
-            color: Colors.grey[800],
-            padding: const EdgeInsets.only(left: 20, top: 80, right: 20),
+            color: Colors.grey[700],
+            padding: const EdgeInsets.only(left: 20, top: 50, right: 20),
             child: SingleChildScrollView(
                 child: Form(
                     child: Column(children: <Widget>[
               Text(
                 "Step 2/2",
                 style: TextStyle(
-                    fontSize: SizeConfig.screenWidth / 20, color: Colors.white),
+                  fontSize: SizeConfig.screenWidth / 15,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                ),
                 textAlign: TextAlign.center,
               ),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 controller: pNumControler,
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
-                      borderSide:
-                          const BorderSide(color: Colors.grey, width: 1.0)),
+                    borderSide: const BorderSide(
+                      color: Colors.grey,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xff2a2e43),
+                      width: 2.0,
+                    ),
+                  ),
                   labelText: 'Phone Number',
                   hintText: "0XXXXXXX",
                   labelStyle: TextStyle(color: Colors.white),
                   hintStyle: TextStyle(color: Colors.white),
                 ),
               ),
-              RaisedButton(
-                  child: Text("Verify", style: TextStyle(fontSize: 20)),
-                  color: Colors.lightBlue[900],
-                  textColor: Colors.yellow[700],
-                  onPressed: () {}),
+              SizedBox(
+                height: 20.0,
+              ),
+              TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Color(0xff2a2e43),
+                  onSurface: Colors.grey,
+                  minimumSize: Size(200.0, 50.0),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                ),
+                child: Text(
+                  "Verify",
+                  style: TextStyle(
+                    fontSize: SizeConfig.screenWidth / 20,
+                  ),
+                ),
+                onPressed: () {},
+              ),
+              SizedBox(
+                height: 20.0,
+              ),
               TextFormField(
+                style: TextStyle(
+                  color: Colors.white,
+                ),
                 decoration: InputDecoration(
                   border: const OutlineInputBorder(
-                      borderSide: const BorderSide(color: Colors.grey)),
+                    borderSide: const BorderSide(
+                      color: Colors.grey,
+                      width: 2.0,
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: Color(0xff2a2e43),
+                      width: 2.0,
+                    ),
+                  ),
                   labelText: 'Verification Code',
                   hintText: "XXXX",
                   labelStyle: TextStyle(color: Colors.white),
@@ -82,27 +133,32 @@ class _RegisterDriverState extends State<RegisterDriver> {
               Container(
                 margin: EdgeInsets.only(
                     left: 10,
-                    top: 60,
-                    bottom: SizeConfig.blockSizeHorizontal * 20),
+                    top: 50,
+                    bottom: SizeConfig.blockSizeHorizontal * 10),
                 child: Text(
                   "By creating an account you agree to our Terms of Service and Privacy Policy",
                   style: TextStyle(
-                      fontSize: SizeConfig.screenWidth / 20,
+                      fontSize: SizeConfig.screenWidth / 25,
                       color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
               Align(
                 alignment: Alignment.bottomCenter,
-                child: RaisedButton(
-                    padding: EdgeInsets.only(
-                        left: SizeConfig.left / 3, right: SizeConfig.right / 3),
+                child: TextButton(
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      backgroundColor: Color(0xff2a2e43),
+                      onSurface: Colors.grey,
+                      minimumSize: Size(200.0, 50.0),
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                      ),
+                    ),
                     child: Text(
                       "Submit",
                       style: TextStyle(fontSize: SizeConfig.screenWidth / 20),
                     ),
-                    color: Colors.lightBlue[900],
-                    textColor: Colors.yellow[700],
                     onPressed: () async {
                       try {
                         User user = await _auth.registerWithEmailAndPassword(
