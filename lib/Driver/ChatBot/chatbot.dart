@@ -81,9 +81,9 @@ class _ChatBotState extends State<ChatBot> {
             reverse: true,
             itemCount: messages.length,
             shrinkWrap: true,
+            primary: false,
             padding: EdgeInsets.only(top: 10, bottom: 10),
-            physics: NeverScrollableScrollPhysics(),
-            itemBuilder: (context, index) {
+              itemBuilder: (context, index) {
               return Container(
                 padding:
                     EdgeInsets.only(left: 14, right: 14, top: 10, bottom: 10),

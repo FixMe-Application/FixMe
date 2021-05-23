@@ -5,6 +5,7 @@ import 'package:fix_me_app/CommonScreens/Notifications/notifications.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
+import 'package:fix_me_app/Driver/ChatBot/chatbot.dart';
 import 'package:fix_me_app/Driver/Payments/Payments-Settings.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
 import 'package:fix_me_app/widgets/sideNav.dart';
@@ -217,7 +218,8 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Notifications()))
+                            builder: (context) => ChatBot()))
+                            // builder: (context) => Notifications()))
                   },
               child: Icon(
                 Icons.sms,
