@@ -31,7 +31,7 @@ class _LoginState extends State<Login> {
             fontSize: SizeConfig.screenWidth / 20,
           ),
         ),
-        backgroundColor: Colors.lightBlue[900],
+        backgroundColor: Color(0xff2a2e43),
         centerTitle: true,
       ),
       body: new Stack(children: <Widget>[
@@ -285,10 +285,16 @@ class _LoginState extends State<Login> {
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-              child: new RaisedButton(
-                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 5),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(25.0)),
+              child: new TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Color(0xff2a2e43),
+                  onSurface: Colors.grey,
+                  minimumSize: Size(100.0, 50.0),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     dynamic result =
@@ -300,7 +306,6 @@ class _LoginState extends State<Login> {
                     }
                   }
                 },
-                color: Colors.lightBlue[900],
                 child: new Text(
                   "LOGIN",
                   style: new TextStyle(
