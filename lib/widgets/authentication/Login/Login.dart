@@ -25,9 +25,9 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.grey[700],
       appBar: AppBar(
         title: Text(
-          "SignIn",
+          "Sign in",
           style: TextStyle(
-            color: Colors.yellow[700],
+            color: Colors.white,
             fontSize: SizeConfig.screenWidth / 20,
           ),
         ),
@@ -55,6 +55,8 @@ class _LoginState extends State<Login> {
                       SizedBox(height: 15),
                       Container(
                         child: new RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0)),
                           onPressed: () async {
                             bool result = await AuthService().loginWithGoogle();
                             if (!result) {
@@ -91,6 +93,8 @@ class _LoginState extends State<Login> {
                       ),
                       Container(
                         child: new RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0)),
                           onPressed: () async {
                             bool result =
                                 await AuthService().loginWithFacebook();
@@ -277,12 +281,14 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(
-              height: 100,
+              height: 30,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
               child: new RaisedButton(
-                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 10),
+                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 5),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(25.0)),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     dynamic result =
@@ -298,9 +304,9 @@ class _LoginState extends State<Login> {
                 child: new Text(
                   "LOGIN",
                   style: new TextStyle(
-                    color: Colors.yellow[700],
+                    color: Colors.white,
                     fontSize: SizeConfig.screenWidth / 25,
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
