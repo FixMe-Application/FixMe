@@ -27,8 +27,9 @@ class _RegisterState extends State<Register> {
           title: Text(
             "Register",
             style: TextStyle(
-                fontSize: SizeConfig.screenWidth / 20,
-                color: Colors.yellow[700]),
+              fontSize: SizeConfig.screenWidth / 20,
+              color: Colors.white,
+            ),
           ),
           centerTitle: true,
         ),
@@ -43,8 +44,10 @@ class _RegisterState extends State<Register> {
                 Text(
                   "CREATE ACCOUNT",
                   style: TextStyle(
-                      fontSize: SizeConfig.screenWidth / 20,
-                      color: Colors.white),
+                    fontSize: SizeConfig.screenWidth / 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -53,8 +56,9 @@ class _RegisterState extends State<Register> {
                 Text(
                   "Step 1/2",
                   style: TextStyle(
-                      fontSize: SizeConfig.screenWidth / 20,
-                      color: Colors.white),
+                    fontSize: SizeConfig.screenWidth / 20,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -62,6 +66,10 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: fNameController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide:
@@ -77,6 +85,10 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                     controller: lNameController,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(
                           borderSide: const BorderSide(
@@ -91,6 +103,10 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: emailController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
                         borderSide: const BorderSide(color: Colors.grey)),
@@ -105,6 +121,10 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: passwordController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   obscureText: true,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
@@ -120,6 +140,10 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   obscureText: true,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
                           borderSide: const BorderSide(color: Colors.grey)),
@@ -129,26 +153,31 @@ class _RegisterState extends State<Register> {
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10.0,
                 ),
                 Container(
                   margin: const EdgeInsets.all(1),
                 ),
                 Row(children: <Widget>[
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        right: SizeConfig.right / 4,
-                        top: 10,
-                        left: SizeConfig.left / 4),
+                      top: 15.0,
+                      left: SizeConfig.left / 30,
+                    ),
                     child: Text(
-                      "User type",
+                      "User Type",
                       style: TextStyle(
-                          fontSize: SizeConfig.screenWidth / 20,
-                          color: Colors.white),
+                        fontSize: SizeConfig.screenWidth / 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -160,7 +189,7 @@ class _RegisterState extends State<Register> {
                     elevation: 16,
                     dropdownColor: Colors.grey[800],
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 18.0,
                       color: Colors.white,
                     ),
                     onChanged: (String newValue) {
@@ -178,18 +207,29 @@ class _RegisterState extends State<Register> {
                         child: Text(value),
                       );
                     }).toList()),
+                SizedBox(
+                  height: 20.0,
+                ),
                 new Align(
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     child: Text(
                       "Next",
-                      style: TextStyle(fontSize: 30, color: Colors.yellow[700]),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
                     style: ElevatedButton.styleFrom(
                       primary: Colors.lightBlue[900],
                       padding: EdgeInsets.only(
-                          left: SizeConfig.left / 3,
-                          right: SizeConfig.right / 3),
+                        left: SizeConfig.left / 3,
+                        right: SizeConfig.right / 3,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      minimumSize: Size(100, 50),
                     ),
                     onPressed: () async {
                       final userFName = fNameController.text;
