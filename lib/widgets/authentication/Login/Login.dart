@@ -253,9 +253,9 @@ class _LoginState extends State<Login> {
                   child: new Text(
                     "Don't have an account yet? ",
                     style: new TextStyle(
-                        color: Colors.white,
-                        fontSize: SizeConfig.screenWidth / 20,
-                        fontWeight: FontWeight.w600),
+                      color: Colors.white,
+                      fontSize: SizeConfig.screenWidth / 25,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -267,10 +267,10 @@ class _LoginState extends State<Login> {
                       child: new Text(
                         "Register Here!",
                         style: new TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.white,
-                            fontSize: SizeConfig.screenWidth / 20,
-                            fontWeight: FontWeight.w600),
+                          color: Colors.white,
+                          fontSize: SizeConfig.screenWidth / 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       onTap: () => {
                         print("Register page here"),
