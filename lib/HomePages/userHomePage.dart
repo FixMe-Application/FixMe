@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:fix_me_app/ChatBot/chatbot.dart';
 import 'package:fix_me_app/Menu%20pages/Settings/settings.dart';
 import 'package:fix_me_app/Menu%20pages/about_us.dart';
 import 'package:fix_me_app/Menu%20pages/help.dart';
@@ -190,7 +191,8 @@ class _UserHomePageState extends State<UserHomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => Notifications()))
+                            builder: (context) => ChatBot()))
+                            // builder: (context) => Notifications()))
                   },
               child: Icon(
                 Icons.sms,
