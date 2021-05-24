@@ -25,7 +25,7 @@ class Wrapper extends StatelessWidget {
               return DriverHomePagePrimary();
             } else if (userType.data['userType'] == 'As a Mechanic') {
               print(userType.data['userType']);
-              return MechanicHomePageFirst();
+              return MechanicHomePage2();
             } else {
               print(userType.data['userType'] == 'As a Fuel Supplier');
               return FuelHomePage2();

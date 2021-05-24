@@ -1,5 +1,7 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'dart:ui';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fix_me_app/CommonScreens/Menu%20pages/tasks.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
@@ -92,7 +94,7 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
     AssistantMethods.getCurrentOnlineUserInfo();
   }
 
-  void saveDriverSideRequest() {
+  Widget saveDriverSideRequest() {
     driverSideRequestReference =
         FirebaseDatabase.instance.reference().child("DriverSideRequest").push();
 
@@ -140,8 +142,8 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
                   ],
                 ),
               ),
-              accountName: new Text('Raja'),
-              accountEmail: new Text('testemail@test.com'),
+              accountName: new Text('Champika'),
+              accountEmail: new Text('champikamendis.cm@gmail.com'),
               currentAccountPicture: new CircleAvatar(
                 backgroundImage: new NetworkImage('http://i.pravatar.cc/300'),
               ),
@@ -193,7 +195,7 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
         ),
         floatingActionButton: Row(children: [
           SizedBox(
-            width: 40,
+            width: 50,
           ),
           FloatingActionButton.extended(
             onPressed: () {
@@ -348,7 +350,7 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
     showModalBottomSheet(
         context: context,
         builder: (context) => Container(
-            height: 500,
+            height: 300,
             child: Column(children: <Widget>[
               SizedBox(
                 height: 15,
@@ -374,6 +376,76 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
                   onPressed: () async {
                     saveDriverSideRequest();
                     _getPolylinesWithLocation();
+                    mechanicRequestModal();
+                    Navigator.pop(context);
+                    mechanicRequestModal();
+                  }),
+            ])));
+  }
+
+  mechanicRequestModal() {
+    const colorizeColors = [
+      Colors.purple,
+      Colors.blue,
+      Colors.yellow,
+      Colors.red,
+    ];
+
+    const colorizeTextStyle = TextStyle(
+      fontSize: 40.0,
+      fontFamily: 'Horizon',
+    );
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => Container(
+            height: 300,
+            child: Column(children: <Widget>[
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: 250.0,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        ColorizeAnimatedText(
+                          'Please wait...',
+                          textStyle: colorizeTextStyle,
+                          colors: colorizeColors,
+                        ),
+                        ColorizeAnimatedText(
+                          'Searching Mechanics',
+                          textStyle: colorizeTextStyle,
+                          colors: colorizeColors,
+                        ),
+                        ColorizeAnimatedText(
+                          'Connecting with Mechanics',
+                          textStyle: colorizeTextStyle,
+                          colors: colorizeColors,
+                        ),
+                      ],
+                      isRepeatingAnimation: true,
+                      onTap: () {
+                        print("Tap Event");
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              RaisedButton(
+                  child: Text(
+                    "Cancel Request",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  color: Colors.blue,
+                  onPressed: () {
                     Navigator.pop(context);
                   }),
             ])));

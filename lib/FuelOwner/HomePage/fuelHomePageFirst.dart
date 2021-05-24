@@ -6,8 +6,8 @@ import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
 import 'package:fix_me_app/FuelOwner/Payments/account_settings.dart';
+import 'package:fix_me_app/Widgets/Navigation/SideNav.dart';
 import 'package:fix_me_app/widgets/authentication/services/authService.dart';
-import 'package:fix_me_app/widgets/sideNav.dart';
 import 'package:flutter/material.dart';
 
 class FuelHomePageFirst extends StatefulWidget {

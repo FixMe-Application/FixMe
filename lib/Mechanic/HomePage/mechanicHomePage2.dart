@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:fix_me_app/widgets/Navigation/SideNav.dart';
 import 'package:flutter/material.dart';
@@ -42,9 +43,9 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
     ],
   ];
 
-  LatLng _originLocation;
+  LatLng _originLocation = LatLng(7.182490, 79.895399);
 
-  LatLng _destinationLocation = LatLng(6.4204138, 80.0049826);
+  LatLng _destinationLocation = LatLng(6.9728, 79.9161);
 
   _getPolylinesWithLocation() async {
     List<LatLng> _coordinates =
@@ -73,6 +74,13 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
       _polylines[id] = polyline;
       _polylineCount++;
     });
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentLocation();
   }
 
   @override
@@ -163,10 +171,10 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
       Uint8List imageData = await getMarker();
       Position newPosition = await Geolocator.getCurrentPosition(
           desiredAccuracy: LocationAccuracy.high);
-      LatLng latLng = new LatLng(newPosition.latitude, newPosition.longitude);
+      LatLng latLng = new LatLng(7.182490, 79.895399);
       setState(() {
         _position = newPosition;
-        _originLocation = LatLng(_position.latitude, _position.longitude);
+        _originLocation = LatLng(7.182490, 79.895399);
         CameraUpdate cameraUpdate = CameraUpdate.newLatLngZoom(latLng, 14.0);
         _controller.animateCamera(cameraUpdate);
       });
@@ -174,7 +182,7 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
       this.setState(() {
         Marker myLocation = Marker(
             markerId: MarkerId("Home"),
-            position: LatLng(_position.latitude, _position.longitude),
+            position: LatLng(7.182490, 79.895399),
             icon: BitmapDescriptor.fromBytes(imageData),
             infoWindow: InfoWindow(title: "Home"));
 
@@ -223,7 +231,7 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
               width: 170,
               child: RaisedButton(
                 onPressed: () {
-                  _getPolylinesWithLocation();
+                  showDriverRequest();
                 },
                 child: Column(
                   children: <Widget>[
@@ -244,5 +252,64 @@ class _MechanicHomePage2State extends State<MechanicHomePage2> {
             ),
           ],
         ));
+  }
+
+  showDriverRequest() {
+    const colorizeColors = [
+      Colors.purple,
+      Colors.blue,
+      Colors.yellow,
+      Colors.red,
+    ];
+
+    const colorizeTextStyle = TextStyle(
+      fontSize: 30.0,
+      fontFamily: 'Horizon',
+    );
+    showModalBottomSheet(
+        context: context,
+        builder: (context) => Container(
+            height: 400,
+            child: Column(children: <Widget>[
+              SizedBox(
+                height: 15,
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10.0),
+                child: Align(
+                  alignment: Alignment.center,
+                  child: SizedBox(
+                    width: 250.0,
+                    child: AnimatedTextKit(
+                      animatedTexts: [
+                        ColorizeAnimatedText(
+                          'Champika Making you request to come for a help',
+                          textStyle: colorizeTextStyle,
+                          colors: colorizeColors,
+                        ),
+                      ],
+                      isRepeatingAnimation: true,
+                      onTap: () {
+                        print("Tap Event");
+                      },
+                    ),
+                  ),
+                ),
+              ),
+              RaisedButton(
+                  child: Text(
+                    "Accept Request",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 20,
+                      color: Colors.white,
+                    ),
+                  ),
+                  color: Colors.blue,
+                  onPressed: () {
+                    _getPolylinesWithLocation();
+                    Navigator.pop(context);
+                  }),
+            ])));
   }
 }
