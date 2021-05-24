@@ -23,18 +23,19 @@ class _RegisterState extends State<Register> {
     SizeConfig().init(context);
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.lightBlue[900],
+          backgroundColor: Color(0xff2a2e43),
           title: Text(
             "Register",
             style: TextStyle(
-                fontSize: SizeConfig.screenWidth / 20,
-                color: Colors.yellow[700]),
+              fontSize: SizeConfig.screenWidth / 20,
+              color: Colors.white,
+            ),
           ),
           centerTitle: true,
         ),
         body: Container(
             height: SizeConfig.screenHeight,
-            color: Colors.grey[800],
+            color: Colors.grey[700],
             padding: const EdgeInsets.only(left: 20, top: 40, right: 20),
             child: SingleChildScrollView(
                 child: Form(
@@ -43,8 +44,10 @@ class _RegisterState extends State<Register> {
                 Text(
                   "CREATE ACCOUNT",
                   style: TextStyle(
-                      fontSize: SizeConfig.screenWidth / 20,
-                      color: Colors.white),
+                    fontSize: SizeConfig.screenWidth / 20,
+                    fontWeight: FontWeight.w600,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -53,8 +56,9 @@ class _RegisterState extends State<Register> {
                 Text(
                   "Step 1/2",
                   style: TextStyle(
-                      fontSize: SizeConfig.screenWidth / 20,
-                      color: Colors.white),
+                    fontSize: SizeConfig.screenWidth / 20,
+                    color: Colors.white,
+                  ),
                   textAlign: TextAlign.center,
                 ),
                 SizedBox(
@@ -62,10 +66,21 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: fNameController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
-                        borderSide:
-                            const BorderSide(color: Colors.yellow, width: 1.0)),
+                      borderSide:
+                          const BorderSide(color: Colors.yellow, width: 1.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff2a2e43),
+                        width: 2.0,
+                      ),
+                    ),
                     labelText: 'First Name',
                     labelStyle: TextStyle(color: Colors.white),
                     hintText: "Zeena",
@@ -77,10 +92,21 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                     controller: lNameController,
+                    keyboardType: TextInputType.text,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
                     decoration: InputDecoration(
                       border: const OutlineInputBorder(
-                          borderSide: const BorderSide(
-                              color: Colors.white, width: 1.0)),
+                        borderSide:
+                            const BorderSide(color: Colors.white, width: 1.0),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xff2a2e43),
+                          width: 2.0,
+                        ),
+                      ),
                       labelText: 'Last Name',
                       labelStyle: TextStyle(color: Colors.white),
                       hintText: "Youhan",
@@ -91,9 +117,20 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: emailController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey)),
+                      borderSide: const BorderSide(color: Colors.grey),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff2a2e43),
+                        width: 2.0,
+                      ),
+                    ),
                     labelText: 'Email',
                     labelStyle: TextStyle(color: Colors.white),
                     hintText: "zeena2gmail.com",
@@ -105,10 +142,21 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   controller: passwordController,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   obscureText: true,
                   decoration: InputDecoration(
                     border: const OutlineInputBorder(
-                        borderSide: const BorderSide(color: Colors.grey)),
+                      borderSide: const BorderSide(color: Colors.grey),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Color(0xff2a2e43),
+                        width: 2.0,
+                      ),
+                    ),
                     labelText: 'Password',
                     labelStyle: TextStyle(color: Colors.white),
                     hintText: "XXXXXXX",
@@ -120,35 +168,51 @@ class _RegisterState extends State<Register> {
                 ),
                 TextFormField(
                   obscureText: true,
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
                   decoration: InputDecoration(
                       border: const OutlineInputBorder(
-                          borderSide: const BorderSide(color: Colors.grey)),
+                        borderSide: const BorderSide(color: Colors.grey),
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Color(0xff2a2e43),
+                          width: 2.0,
+                        ),
+                      ),
                       labelText: 'Confirm Password',
                       labelStyle: TextStyle(color: Colors.white),
                       hintText: "XXXXXXX",
                       hintStyle: TextStyle(color: Colors.white)),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 10.0,
                 ),
                 Container(
                   margin: const EdgeInsets.all(1),
                 ),
                 Row(children: <Widget>[
-                  Icon(
-                    Icons.person,
-                    color: Colors.white,
+                  Padding(
+                    padding: const EdgeInsets.only(top: 15.0),
+                    child: Icon(
+                      Icons.person,
+                      color: Colors.white,
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(
-                        right: SizeConfig.right / 4,
-                        top: 10,
-                        left: SizeConfig.left / 4),
+                      top: 15.0,
+                      left: SizeConfig.left / 30,
+                    ),
                     child: Text(
-                      "User type",
+                      "User Type",
                       style: TextStyle(
-                          fontSize: SizeConfig.screenWidth / 20,
-                          color: Colors.white),
+                        fontSize: SizeConfig.screenWidth / 22,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
+                      ),
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -156,11 +220,15 @@ class _RegisterState extends State<Register> {
                 DropdownButton<String>(
                     value: dropdownValue,
                     isExpanded: true,
-                    iconSize: 24,
                     elevation: 16,
-                    dropdownColor: Colors.grey[800],
+                    dropdownColor: Color(0xff2a2e43),
+                    icon: Icon(
+                      Icons.arrow_drop_down,
+                      color: Colors.white,
+                    ),
+                    iconSize: 42,
                     style: TextStyle(
-                      fontSize: 22,
+                      fontSize: 18.0,
                       color: Colors.white,
                     ),
                     onChanged: (String newValue) {
@@ -178,18 +246,29 @@ class _RegisterState extends State<Register> {
                         child: Text(value),
                       );
                     }).toList()),
+                SizedBox(
+                  height: 20.0,
+                ),
                 new Align(
                   alignment: Alignment.bottomCenter,
                   child: ElevatedButton(
                     child: Text(
                       "Next",
-                      style: TextStyle(fontSize: 30, color: Colors.yellow[700]),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.white,
+                      ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.lightBlue[900],
+                      primary: Color(0xff2a2e43),
                       padding: EdgeInsets.only(
-                          left: SizeConfig.left / 3,
-                          right: SizeConfig.right / 3),
+                        left: SizeConfig.left / 3,
+                        right: SizeConfig.right / 3,
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25.0),
+                      ),
+                      minimumSize: Size(100, 50),
                     ),
                     onPressed: () async {
                       final userFName = fNameController.text;
