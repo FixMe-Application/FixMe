@@ -27,13 +27,13 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.grey[700],
       appBar: AppBar(
         title: Text(
-          "SignIn",
+          "Sign in",
           style: TextStyle(
-            color: Colors.yellow[700],
+            color: Colors.white,
             fontSize: SizeConfig.screenWidth / 20,
           ),
         ),
-        backgroundColor: Colors.lightBlue[900],
+        backgroundColor: Color(0xff2a2e43),
         centerTitle: true,
       ),
       body: new Stack(children: <Widget>[
@@ -57,6 +57,8 @@ class _LoginState extends State<Login> {
                       SizedBox(height: 15),
                       Container(
                         child: new RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0)),
                           onPressed: () async {
                             bool result = await AuthService().loginWithGoogle();
                             if (!result) {
@@ -93,6 +95,8 @@ class _LoginState extends State<Login> {
                       ),
                       Container(
                         child: new RaisedButton(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(25.0)),
                           onPressed: () async {
                             bool result =
                                 await AuthService().loginWithFacebook();
@@ -251,9 +255,9 @@ class _LoginState extends State<Login> {
                   child: new Text(
                     "Don't have an account yet? ",
                     style: new TextStyle(
-                        color: Colors.white,
-                        fontSize: SizeConfig.screenWidth / 20,
-                        fontWeight: FontWeight.w600),
+                      color: Colors.white,
+                      fontSize: SizeConfig.screenWidth / 25,
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -265,10 +269,10 @@ class _LoginState extends State<Login> {
                       child: new Text(
                         "Register Here!",
                         style: new TextStyle(
-                            decoration: TextDecoration.underline,
-                            color: Colors.white,
-                            fontSize: SizeConfig.screenWidth / 20,
-                            fontWeight: FontWeight.w600),
+                          color: Colors.white,
+                          fontSize: SizeConfig.screenWidth / 18,
+                          fontWeight: FontWeight.w500,
+                        ),
                       ),
                       onTap: () => {
                         print("Register page here"),
@@ -279,12 +283,20 @@ class _LoginState extends State<Login> {
               ],
             ),
             SizedBox(
-              height: 100,
+              height: 30,
             ),
             Container(
               margin: EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-              child: new RaisedButton(
-                padding: EdgeInsets.symmetric(horizontal: 150, vertical: 10),
+              child: new TextButton(
+                style: TextButton.styleFrom(
+                  primary: Colors.white,
+                  backgroundColor: Color(0xff2a2e43),
+                  onSurface: Colors.grey,
+                  minimumSize: Size(100.0, 50.0),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                  ),
+                ),
                 onPressed: () async {
                   if (_formKey.currentState.validate()) {
                     dynamic result =
@@ -296,13 +308,12 @@ class _LoginState extends State<Login> {
                     }
                   }
                 },
-                color: Colors.lightBlue[900],
                 child: new Text(
                   "LOGIN",
                   style: new TextStyle(
-                    color: Colors.yellow[700],
+                    color: Colors.white,
                     fontSize: SizeConfig.screenWidth / 25,
-                    fontWeight: FontWeight.w200,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),

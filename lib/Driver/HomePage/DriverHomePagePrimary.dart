@@ -2,12 +2,12 @@ import 'dart:async';
 import 'dart:typed_data';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:fix_me_app/CommonScreens/Menu%20pages/tasks.dart';
-import 'package:fix_me_app/CommonScreens/Notifications/notifications.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
 import 'package:fix_me_app/Config/Config.dart';
 import 'package:fix_me_app/Driver/Assistant/AssistantMethods.dart';
+import 'package:fix_me_app/Driver/ChatBot/chatbot.dart';
 import 'package:fix_me_app/Driver/Payments/Payments-Settings.dart';
 import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:fix_me_app/Widgets/Navigation/SideNav.dart';
@@ -257,10 +257,9 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
           margin: EdgeInsets.all(5),
           child: GestureDetector(
               onTap: () => {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Notifications()))
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => ChatBot()))
+                    // builder: (context) => Notifications()))
                   },
               child: Icon(
                 Icons.sms,
