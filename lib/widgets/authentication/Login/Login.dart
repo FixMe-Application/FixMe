@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
+  static const String idScreen = "login";
+
   @override
   _LoginState createState() => _LoginState();
 }

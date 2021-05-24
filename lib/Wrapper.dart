@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fix_me_app/Driver/HomePage/DriverHomePagePrimary.dart';
 import 'package:fix_me_app/FuelOwner/HomePage/FuelHomePage2.dart';
+import 'package:fix_me_app/Mechanic/HomePage/MechanicHomePage1.dart';
 import 'package:fix_me_app/Mechanic/HomePage/MechanicHomePage2.dart';
 import 'package:fix_me_app/Widgets/Authentication/Services/ApiService.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +10,7 @@ import 'Widgets/Authentication/Login/Login.dart';
 import 'Widgets/Models/User.dart';
 
 class Wrapper extends StatelessWidget {
+  static const String idScreen = "wrapper";
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
@@ -23,7 +25,7 @@ class Wrapper extends StatelessWidget {
               return DriverHomePagePrimary();
             } else if (userType.data['userType'] == 'As a Mechanic') {
               print(userType.data['userType']);
-              return MechanicHomePage2();
+              return MechanicHomePageFirst();
             } else {
               print(userType.data['userType'] == 'As a Fuel Supplier');
               return FuelHomePage2();

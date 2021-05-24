@@ -1,12 +1,15 @@
 import 'dart:async';
 import 'dart:typed_data';
+import 'package:firebase_database/firebase_database.dart';
 import 'package:fix_me_app/CommonScreens/Menu%20pages/tasks.dart';
 import 'package:fix_me_app/CommonScreens/Notifications/notifications.dart';
 import 'package:fix_me_app/CommonScreens/Settings/settings.dart';
 import 'package:fix_me_app/CommonScreens/about_us.dart';
 import 'package:fix_me_app/CommonScreens/help.dart';
+import 'package:fix_me_app/Config/Config.dart';
+import 'package:fix_me_app/Driver/Assistant/AssistantMethods.dart';
 import 'package:fix_me_app/Driver/Payments/Payments-Settings.dart';
-import 'package:fix_me_app/widgets/authentication/services/authService.dart';
+import 'package:fix_me_app/Widgets/Authentication/Services/AuthService.dart';
 import 'package:fix_me_app/Widgets/Navigation/SideNav.dart';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -26,8 +29,8 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
   GoogleMapController _controller;
   Position _position;
   Geolocator _geolocator;
-  final AuthService _auth = AuthService();
   // StreamSubscription _streamSubscription;
+  final AuthService _auth = AuthService();
   Set<Marker> _marker = {};
   int _polylineCount = 1;
   Map<PolylineId, Polyline> _polylines = <PolylineId, Polyline>{};
@@ -48,9 +51,11 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
     ],
   ];
 
-  LatLng _originLocation = LatLng(6.4204138, 80.0049826);
+  LatLng _originLocation = LatLng(7.182490, 79.895399);
 
-  LatLng _destinationLocation;
+  LatLng _destinationLocation = LatLng(6.9728, 79.9161);
+
+  DatabaseReference driverSideRequestReference;
 
   _getPolylinesWithLocation() async {
     List<LatLng> _coordinates =
@@ -79,6 +84,44 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
       _polylines[id] = polyline;
       _polylineCount++;
     });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    AssistantMethods.getCurrentOnlineUserInfo();
+  }
+
+  void saveDriverSideRequest() {
+    driverSideRequestReference =
+        FirebaseDatabase.instance.reference().child("DriverSideRequest").push();
+
+    Map destinationLocationMap = {
+      // "latitude": _destinationLocation.latitude.toString(),
+      // "longitude": _destinationLocation.longitude.toString()
+      "latitude": "6.574",
+      "longitude": "79.43"
+    };
+
+    Map originLocationMap = {
+      "latitude": _originLocation.latitude.toString(),
+      "longitude": _originLocation.longitude.toString()
+    };
+
+    Map requestInfoMap = {
+      "driverId": "waiting",
+      "originLocation": originLocationMap,
+      "destinationLocation": destinationLocationMap,
+      "createdAt": DateTime.now().toString(),
+      "driverName": userCurrentInfo.name,
+      "driverPhone": userCurrentInfo.phone
+    };
+
+    driverSideRequestReference.set(requestInfoMap);
+  }
+
+  void cancelRequest() {
+    driverSideRequestReference.remove();
   }
 
   @override
@@ -235,9 +278,10 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
   getCurrentLocation() async {
     try {
       Uint8List imageData = await getMarker();
-      Position newPosition = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      Position newPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
       LatLng latLng = new LatLng(newPosition.latitude, newPosition.longitude);
+
       setState(() {
         _position = newPosition;
         _destinationLocation = LatLng(_position.latitude, _position.longitude);
@@ -254,24 +298,6 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
 
         _marker.add(myLocation);
       });
-
-      //     if (_streamSubscription != null) {
-      //   _streamSubscription.cancel();
-      // }
-
-      // var _geolocator = Geolocator();
-      // var locationOptions =
-      //     LocationOptions(accuracy: LocationAccuracy.high, distanceFilter: 10);
-
-      // StreamSubscription<Position> _streamSubscription = _geolocator
-      //     .getPositionStream(locationOptions)
-      //     .listen((Position position) {
-      //       setState(() {
-      //         _position = position;
-      //          CameraUpdate cameraUpdate = CameraUpdate.newCameraPosition(
-      //          );
-      //       });
-      // });
     } catch (e) {
       print('Error: ${e.toString()}');
     }
@@ -313,7 +339,9 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
                     ),
                   ),
                   color: Colors.blue,
-                  onPressed: () {}),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  }),
             ])));
   }
 
@@ -344,8 +372,10 @@ class _DriverHomePagePrimaryState extends State<DriverHomePagePrimary> {
                     ),
                   ),
                   color: Colors.blue,
-                  onPressed: () {
+                  onPressed: () async {
+                    saveDriverSideRequest();
                     _getPolylinesWithLocation();
+                    Navigator.pop(context);
                   }),
             ])));
   }

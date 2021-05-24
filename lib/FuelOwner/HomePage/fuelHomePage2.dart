@@ -161,8 +161,8 @@ class _FuelHomePage2State extends State<FuelHomePage2> {
   getCurrentLocation() async {
     try {
       Uint8List imageData = await getMarker();
-      Position newPosition = await Geolocator()
-          .getCurrentPosition(desiredAccuracy: LocationAccuracy.high);
+      Position newPosition = await Geolocator.getCurrentPosition(
+          desiredAccuracy: LocationAccuracy.high);
       LatLng latLng = new LatLng(newPosition.latitude, newPosition.longitude);
       setState(() {
         _position = newPosition;

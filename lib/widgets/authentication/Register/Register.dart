@@ -6,6 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
+  static const String idScreen = "register";
   @override
   _RegisterState createState() => _RegisterState();
 }

@@ -56,12 +56,19 @@ Future<bool> syncRealtime(String uid, String userType, String name,
 
 Future<DocumentSnapshot> getUserType(String uid) async {
   final Firestore _firestore = Firestore.instance;
-  var result = await _firestore.collection('users').document(uid).get();
+  var result = await _firestore.collection("users").document(uid).get();
   print("hellooo this is result..........................");
   print(result);
   return result;
 }
 
-// Future<DataSnapshot> getDataFromRealtimeDB(String uid) {
-
-// }
+Future<DataSnapshot> getCurrentUserFromRDB(String uid, String userType) {
+  DatabaseReference reference =
+      FirebaseDatabase.instance.reference().child(userType).child(uid);
+  reference.once().then((DataSnapshot dataSnapshot) {
+    if (dataSnapshot.value != null) {
+      print(dataSnapshot.value['name']);
+      return dataSnapshot;
+    }
+  });
+}
